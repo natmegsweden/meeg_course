@@ -2,6 +2,7 @@
 
 In this tutorial, we will do source reconstruction of time-frequency data with a beamformer method known as Dynamic Imaging of Coherent Sources (DICS; Gross et al. 2001). DICS is based on reconstructing sources that show strong dependency (coherence) in the frequency domain.
 
+
 We will start by finding a time-frequency area of interest that want to know the underlying sources. From time-domain data, we will calculate the cross-spectral density of the frequency (or frequencies) of interest and then use the cross-spectral density to find underlying the sources. Most of this is done "under the hood" by FieldTrip with the function _ft_sourceanalysis_.
 
 First, we need to prepare the raw data, define a source model, and calculate the lead field.
@@ -23,7 +24,7 @@ mri_path = '/home/share/workshop_source_reconstruction/data/MRI/';
 
 Make subject and recording specific paths (the cell array "subjects_and_dates" can be expanded)
 
-```{r, engine='octave', eval=FALSE}
+```Matlab
 %% subjects and dates
 
 subjects_and_dates = ...
@@ -86,7 +87,7 @@ Plot all the channels in the data. Notice (at least) three features of interest.
 2. The so-called mu desynchronization from about 300 to 800 msec at around 10 Hz  
 3. The so-called high-beta desynchronization from about  200 to 500 msec at around 22 Hz
 
-```{r, engine='octave', eval=FALSE}
+```matlab
 %% identify interesting features in the data
 
 % pick an event
@@ -108,7 +109,7 @@ ft_multiplotTFR(cfg, combined_tfrs{event_index});
 ![](./images/tfr_example_occipital.png)
 
 ### Visualizing channels
-```{r, engine='octave', eval=FALSE}
+```matlab
 %% channels that we'll plot throughout
 
 colours = ones(306, 3);
@@ -563,5 +564,8 @@ end
 ### Right thumb
 ![](./images/beamformer_contrast_right_thumb.png)
 
+---
+> **Question**: The source reconstruction does not look very good for the index finger. Give an explanation why this might be the case (Hint: Look at the TFR responses).
+---
 
-* Q: The source reconstruction does not look very good for the index finger. Give an explanation why this might be the case (Hint: Look at the TFR responses).
+    **Question**: The source reconstruction does not look very good for the index finger. Give an explanation why this might be the case (Hint: Look at the TFR responses).
