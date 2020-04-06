@@ -125,11 +125,10 @@ When you run multiple scritpts on several subjects and have to go back to redo s
 The best way to avoid such errors is to specifiy subject id and filenames as few places as possible; ideally only once! This can be done by making a meta-script where you specify filenames and subject id (such as the code snippet above) that you then run in the beginning of each script.
 
 
+***
 
+[^1]: van Vliet, M. (2019). [Guidelines for data analysis scripts](https://arxiv.org/pdf/1904.06163.pdf). *ArXiv:1904.06163*.
 
-[^1]: > van Vliet, M. (2019). [Guidelines for data analysis scripts](https://arxiv.org/pdf/1904.06163.pdf). *ArXiv:1904.06163*. 
+[^2]: [The Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) is an initiative to standardise how neuroimaging data is stored  to allow easy sharing of data across reserach groups and sites. Originally BIDS was for sharing MRI data but has since been expanded for MEG (and by extension EEG). Read more: 
 
-[^2]: [The Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) is an initiative to standardise how neuroimaging data is stored  to allow easy sharing of data across reserach groups and sites. Originally BIDS was for sharing MRI data but has since been expanded for MEG (and by extension EEG). 
-    
-    Read more: 
-    > Niso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., T. Moreau, J., Oostenveld, R., Schoffelen, J.-M., Tadel, F., Wexler, J., & Baillet, S. (2018). [MEG-BIDS, the brain imaging data structure extended to magnetoencephalography](https://doi.org/10.1038/sdata.2018.110). *Scientific Data, 5(1)*. 
+Niso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., T. Moreau, J., Oostenveld, R., Schoffelen, J.-M., Tadel, F., Wexler, J., & Baillet, S. (2018). [MEG-BIDS, the brain imaging data structure extended to magnetoencephalography](https://doi.org/10.1038/sdata.2018.110). *Scientific Data, 5(1)*. 
