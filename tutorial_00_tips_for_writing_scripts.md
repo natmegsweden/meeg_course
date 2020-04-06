@@ -2,7 +2,7 @@
 
 Writing data analysis scripts can easily become a mess! there are many steps to go from raw MEG/EEG data to the final results. It is important to keep track of what processing step that goes before and after another. Know what data that should be read in one step, saved to memory, and then read in the next step. If we mess this up, we might end up with invalid results. And it is easy to make errors, e.g., read wrong data files, having different versions of toolboxes, working in the wrong directory, etc., especially in MEG/EEG data processing where there are several manual steps and we often go back to re run analysis.
 
-Below you find a quick list of recommendations to make it easier for you to write effective analysis pipelines. The recommendations are based on van Vliet (2019)[^1] and the MEG-BIDS guidelines[^2]. I recommend that you take a look at these when you have to write your own analysis scripts.
+Below you find a quick list of recommendations to make it easier for you to write effective analysis pipelines. The recommendations are based on van Vliet (2019)[1] and the MEG-BIDS guidelines[2]. I recommend that you take a look at these when you have to write your own analysis scripts.
 
 ## Use section breaks when testing code
 When writing code you often want to run only a small snip of code, e.g. when you test your code while scripting.
@@ -25,7 +25,7 @@ The start of my script my look like this:
 
 ```Matlab
 resotredefaultpath
-addpath('/home/mikkel/fieldtrip/fieldtrip')
+addpath('/home/mikkel/fieldtrip')
 ft_defaults
 ```
 
@@ -127,8 +127,10 @@ The best way to avoid such errors is to specifiy subject id and filenames as few
 
 ***
 
-[^1]: van Vliet, M. (2019). [Guidelines for data analysis scripts](https://arxiv.org/pdf/1904.06163.pdf). *ArXiv:1904.06163*.
+[1]: 
 
-[^2]: [The Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) is an initiative to standardise how neuroimaging data is stored  to allow easy sharing of data across reserach groups and sites. Originally BIDS was for sharing MRI data but has since been expanded for MEG (and by extension EEG). Read more: 
+> van Vliet, M. (2019). [Guidelines for data analysis scripts](https://arxiv.org/pdf/1904.06163.pdf). *ArXiv:1904.06163*. 
 
-Niso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., T. Moreau, J., Oostenveld, R., Schoffelen, J.-M., Tadel, F., Wexler, J., & Baillet, S. (2018). [MEG-BIDS, the brain imaging data structure extended to magnetoencephalography](https://doi.org/10.1038/sdata.2018.110). *Scientific Data, 5(1)*. 
+[2]: [The Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) is an initiative to standardise how neuroimaging data is stored  to allow easy sharing of data across reserach groups and sites. Originally BIDS was for sharing MRI data but has since been expanded for MEG (and by extension EEG). 
+    
+> Niso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., T. Moreau, J., Oostenveld, R., Schoffelen, J.-M., Tadel, F., Wexler, J., & Baillet, S. (2018). [MEG-BIDS, the brain imaging data structure extended to magnetoencephalography](https://doi.org/10.1038/sdata.2018.110). *Scientific Data, 5(1)*. 
