@@ -38,6 +38,8 @@ If you did not complete the data preperation tutorial, you can load the data fil
 load(fullfile(output_path, 'cleaned_downsampled_data.mat')); disp('Done');
 ```
 
+> **Question 2.1:** previosuly we downsampled data to 200Hz. As a consequence hereof, what is the highest frequency we can investigate in this data?
+
 ## Select data
 In the following tutorial, we will only analyse the conditions where the thumb was stimulated, i.e. the condition corresponding to trigger value `16`. Use _ft_selectdata_ to select the conditions with trigger 8:
 
@@ -78,7 +80,7 @@ psd_hann = ft_freqanalysis(cfg, epochs);
 
 Once finished, look at what is in the structure `psd_hann`.
 
-> **Question 2.1:** What is the dimension of the data, and what do the dimensions represent?
+> **Question 2.2:** What is the dimension of the data, and what do the dimensions represent?
 
 Plot the PSD using `ft_multiplotER`. the configuration `cfg.xlim` specifies the limits of the frequency axis. The code below only display the lower frequencies. Change `cfg.xlim` to see the whole spectrum.
 
@@ -99,7 +101,7 @@ ft_multiplotER(cfg, psd_hann);
 ### PSD with multitapers
 Now we will do the same analysis, but use tapers based on Slepian sequences of tapers. The spectral smoothing is specified by passing the frequency range in the configuration `cfg.tapsmofrq`. `ft_freqanalysis` will then calculate the number of tapers needed to achieve the desired frequency smoothing. Note that the frequency smoothing is the range in either direction, so the frequency smoothing is the double of the numerical value given in `cfg.tapsmofrq`.
 
-> **Question 2.2:** How many tapers is used when you run the command below? Hint: it tells you in the terminal.
+> **Question 2.3:** How many tapers is used when you run the command below? Hint: it tells you in the terminal.
 
 ```matlab
 %% Calculate PSD: multitaper
@@ -142,7 +144,7 @@ ft_multiplotER(cfg, psd_hann, psd_dpss, psd_dpss10);
 
 Compare the results from the different methods to calculate PSD.
 
-> **Question 2.3:** Select the alpha range (~8-12 Hz) in the multiplot to plot as topo-plots. 
+> **Question 2.4:** Select the alpha range (~8-12 Hz) in the multiplot to plot as topo-plots. 
 How different/alike are they? Explain why?
 >
 > Select the beta range (~14-30 Hz) and compare topo-plots. How different/alike are they? Explain why?
@@ -199,7 +201,7 @@ figure;
 ft_multiplotTFR(cfg, tfr_hann);
 ```
 
-> **Question 2.4:** This plot look weird! How come? What do we see in the plot (Hint: Remember the PSD plots from before)?
+> **Question 2.5:** This plot look weird! How come? What do we see in the plot (Hint: Remember the PSD plots from before)?
 
 ![](figures/TFR_noBaseline.jpg)
 
@@ -223,7 +225,7 @@ Zoom in on a single channel:
 
 ![](figures/TFR_hannSingleChan.jpg)
 
-> **Question 2.5:** How does the baseline change what we can infer from the TFR (Hint: Toggle the colorbar option to show what the colours represent in either plot)?
+> **Question 2.6:** How does the baseline change what we can infer from the TFR (Hint: Toggle the colorbar option to show what the colours represent in either plot)?
 
 ### Get TFR with Hann taper with varying length
 The previous TFR analysis used a fixed window for all frequencies. This is not optimal in this case. Now we will run the same analysis, but with time windows that vary with the individual frequency. Here we use a time window that corresponds to five times the wavelength of the frequency of interest (`cfg.t_ftimwin = 5./cfg.foi`)
@@ -264,7 +266,7 @@ Zoom in on a single channel:
 
 ![](figures/TFR_hann5singChan.jpg)
 
-> **Question 2.6:** Why the round edges in the plot?
+> **Question 2.7:** Why the round edges in the plot?
 
 ### TFR with multitaper
 Now we will do the same with multitapers. The smoothing range is given in `cfg.tapsmofrq`. Take a look at the values `cfg.tapsmofrq` and `cfg.t_ftimwin` before running `ft_freqanalysis`. 
@@ -377,4 +379,4 @@ figure; ft_multiplotTFR(cfg, tfr_wavelet_nophase);
 ## End of Tutoiral 2
 Now you have compared different methods to calculate PSD and TFR.
 
-> **Question 2.7:** what do the TFR results show? Pick the method you prefer and explain what type of *induced responses* we see (Hint: Remember what ERS and ERD stood for). Use representative plots to illustrate the results.
+> **Question 2.8:** what do the TFR results show? Pick the method you prefer and explain what type of *induced responses* we see (Hint: Remember what ERS and ERD stood for). Use representative plots to illustrate the results.
