@@ -262,18 +262,18 @@ cfg.latency         = .060;     % The time-point to plot (s)
 cfg.colorbar        = 'no';
 
 ft_sourceplot(cfg, source_mne)
-````
+```
 
 ![](figures/mne_50ms.png)
 
->**Question 4.6:** By a glance, where do you see activated sources? How many different cortical patches are "active" at this time point?
+> **Question 4.6:** By a glance, where do you see activated sources? How many different cortical patches are "active" at this time point?
   
 This image shows a single time point for all estimated sources. Each source (i.e., each grid-point on the cortical surface) has a time series of activation. You can in principle treat each source as its own "channel" -- you can view the activation of all sources over time, analogous to the activation in MEG or EEG channels. Use MATLAB to plot source activation across time (here only plotting every third time-series to save memory)
 
 ```matlab
 %% Plot source time-courses
 plot(source_mne.time, source_mne.avg.pow(1:3:end,:));
-````
+```
 
 ![](figures/mne_all_sources.png)
 
@@ -305,13 +305,13 @@ ft_sourcemovie(cfg,source_mne);
 
 Now try to use ``ft_sourceplot`` and ``ft_sourcemovie`` (as above) to plot the source space topography of other time points and explore the source topo.
 
-> **Question 4.6:** Can you find the time-point corresponding to the image below? Try to look at the scalp topographies to get an educated guess about the time.  
+> **Question 4.7:** Can you find the time-point corresponding to the image below? Try to look at the scalp topographies to get an educated guess about the time.  
 
 ![](figures/mne_150ms.png)
 
 It is difficult to answer what type of source model and source reconstruction method that is better. The matter model depends on the question you want to answer and the kind of signal you are interested in for the particular answer. For example, if you know that a focal patch of cortex generates the signal, then a single dipole model might be sufficient, and you do not gain extra information by including the entire cortex. Similar, if we know that the process we are interested in requires distributed sources, then itis not valid to assume that a single dipole is sufficient.
 
-> **Question 4.7:** Around what times in the time-series might a dipole model be sufficient, and at what points is a distributed model better?
+> **Question 4.8:** Around what times in the time-series might a dipole model be sufficient, and at what points is a distributed model better?
 
 ## End of Tutorial 4B
 This tutorial demonstrates how to do MNE source reconstruction. Compared to the dipole (and beamformer, as you will see later) it differs in how to prepare the source model because of the assumptions behind MNE. But the additional assumption means that MNE is a quite robust source reconstruction method.
