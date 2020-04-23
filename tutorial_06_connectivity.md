@@ -1,5 +1,5 @@
 # Connectivity
-In this tutorial you will do three connectivity analyses. Connectivity is a broad topic. In short, we are looking for statistical dependence between signals; what is often called *functional connectivity*. MEG and EEG are perfect methods to study connectivity as the temporal dynamics allows for estimation of various statistical measurements of dependence between signals. While it is relatively simple to apply and calculate various connectivity measures to MEg/EEG data, it is, however, far from trivial to just look for dependencies in MEG/EEG signals. Spurious connections may arise from trivial issues, such as field spread. General considerations when doing connectivity analysis with MEG/EEG is whether you are in source- or sensor-space and what connectivity measure that you use, and what the combination of the two say about your signals and then in the end, how the signals relate to processes in brain or cognition.
+In this tutorial you will do three connectivity analyses. Connectivity is a broad topic. In short, we are looking for statistical dependence between signals; what is often called *functional connectivity*. MEG and EEG are perfect methods to study connectivity as the temporal dynamics allows for estimation of various statistical measurements of dependence between signals. While it is relatively simple to apply and calculate various connectivity measures to MEG/EEG data, it is, however, far from trivial to just look for dependencies in MEG/EEG signals. Spurious connections may arise from trivial issues, such as field spread. General considerations when doing connectivity analysis with MEG/EEG is whether you are in source- or sensor-space and what connectivity measure that you use, and what the combination of the two say about your signals and then in the end, how the signals relate to processes in brain or cognition.
 
 This tutorial does not offer definite answers to the problems. The tutorial is designed to outline various strategies for calculating connectivity with MEG/EEG signals. It is a demonstration of how it can be done. The tutorial is divided into three parts:
 
@@ -117,7 +117,7 @@ ft_databrowser(cfg, slct_data)
 
 FOr the first connectivity estimation, we will calculate the coherence between the three channels. Coherence between signals is estimated by calculating the cross-spectral density (CSD) between the signals and dividing by the power spectral densities (PSD) of the signals. Coherence is a measure in the frequency-domain and is calculated for each frequency bin.
 
-To calculate the coherence between the signals, we first dop a Fourier-transform of the data. As is the previous tutorials,we use `ft_freqanalysis` and speccify that the output should be the complex-valued Fourer decomposition (``cfg.output = 'fourier'``;):
+To calculate the coherence between the signals, we first do a Fourier-transform of the data. As is the previous tutorials,we use `ft_freqanalysis` and specify that the output should be the complex-valued Fourier decomposition (``cfg.output = 'fourier'``;):
 
 ````matlab
 %% Fourier transform
@@ -139,7 +139,7 @@ cfg.method = 'coh';
 slct_coh = ft_connectivityanalysis(cfg, slct_freq)
 ````
 
-This calculates coherence between all three channels for all the frequencies we selcted above when we callen `ft_freqanalysis`-. Let us visualise the coherence spectra:
+This calculates coherence between all three channels for all the frequencies we selected above when we called `ft_freqanalysis`-. Let us visualise the coherence spectra:
 
 ````matlab
 cfg = [];
@@ -156,14 +156,27 @@ This is a 3x3 grid showing the coherence spectra for each pair of channels.
 
 We are not limited to estimating connectivity between only a few sensors. For the next part, we calculate the coherence between all sensors. First, select one sensor that will be the reference sensor. This is not a reference in the same sense as the reference for EEG. Here it means the sensor that we use to calculate coherence between this sensor and all other sensors; i.e. one-to-all connectivity. Sometimes this is also called the "seed".
 
-AS before, choose a sensor that shows a strong evoked response, e.g.:
+As before, choose a sensor that shows a strong evoked response, e.g.:
 
 ````matlab
 %% Reference sensor
 ref_chan = 'MEG0221';
 ````
 
-AS you did above, use `ft_connectivityanalysis` to estimate the coherence. This time, also specify a combination of channels (`cfg.channelcmb`). The way it is specified below (`{ref_chan, 'megmag'}`) means the combination of the selected channel and all magnetometers. If you omit this line, it will try to calculate coherence-spectra between all possible combinations of channels. This will probably be too intensive to run within a reasonable timeframe.
+As you did above, use `ft_connectivityanalysis` to estimate the coherence. First calculate the complex valued Fourier transform of the data:
+
+````matlab
+%% Fourier transform
+cfg = [];
+cfg.method    = 'mtmfft';
+cfg.taper     = 'hanning';
+cfg.output    = 'fourier';
+cfg.foilim    = [2 40];
+
+data_freq = ft_freqanalysis(cfg, data);
+````
+
+Then do the connectivity analysis. This time, also specify a combination of channels (`cfg.channelcmb`). The way it is specified below (`{ref_chan, 'megmag'}`) means the combination of the selected channel and all magnetometers. If you omit this line, it will try to calculate coherence-spectra between all possible combinations of channels. This will probably be too intensive to run within a reasonable timeframe.
 
 ````matlab
 cfg = [];
@@ -253,7 +266,23 @@ load('headmodel_meg')
 load('mri_resliced.mat')
 ````
 
-To calculate the coherence in source space with DICS, we need to specify a reference or seed point in the source space. In the exampl below I use the location that had maximum power in the DICS source reconstruction in the beamformer tutorial (``maxpos = [-4 1 11]``):
+To calculate the coherence in source space with DICS, we need to specify a reference or seed point in the source space. In the example below I use the location that had maximum power in the DICS source reconstruction in the beamformer tutorial (``maxpos = [-4 1 11]``).
+
+First calculate the leadfield (or load the one created in the beamformer tutorial):
+
+````matlab
+%% Make leadfields for MEG: gradiometers
+cfg.senstype        = 'meg';
+cfg.grad            = cleaned_downsampled_data.grad;
+cfg.headmodel       = headmodel_meg;
+cfg.channel         = 'meggrad';
+cfg.grid.resolution = 1;            % Grid spacing 1x1x1 of unit defined below
+cfg.grid.unit       = 'cm';         % Grid unit
+
+leadfield_meg = ft_prepare_leadfield(cfg);
+````
+
+The call `ft_sourceanalysis`:
 
 ````matlab
 cfg = [];
