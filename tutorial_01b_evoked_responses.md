@@ -96,7 +96,7 @@ evo = ft_timelockanalysis(cfg, cropped_data_bs);
 ```
 Congratulations, you have now computed evoked responses.
 
-> **Question 1.6:** What is in you newly created `evo` struct? Explain the different fields.
+> **Question 1.5:** What is in you newly created `evo` struct? Explain the different fields.
 
 ## Visualize evoked responses
 Use `ft_multiplotER` to plot the ERFs/ERPs. The plots show the averaged responses for all sensors of the given type.
@@ -135,7 +135,7 @@ ft_multiplotER(cfg, evo);
 
 ![multiplotEReeg](figures/multiplotEReeg.png "ft_multiplot electrodes")
 
-> **Question 1.7:** Why is it a good idea to plot magnetometers and gradiometers seperatly? 
+> **Question 1.6:** Why is it a good idea to plot magnetometers and gradiometers separately? 
 > 
 > You can plot both magnetomenters and gradiomenters in a single plot with `ft_multiplotER` by changeing the layout to `neuromag306all.lay`:
 > ```matlab
@@ -217,7 +217,7 @@ ft_topoplotER(cfg, evo_combined_planar);
 
 ![eeg_topo](figures/topo_50_eeg.png)
 
-> **Question 1.8:** Based on the topographies: where do you estimate that are equivalent current dipoles and how many? Hint: remember the right-hand rule and what the different sensor types measure.
+> **Question 1.7:** Based on the topographies: where do you estimate that are equivalent current dipoles and how many? Hint: remember the right-hand rule and what the different sensor types measure.
 >
 > Note that the EEG topography above is misleading for locating dipoles. Something in the pre-processing did not go right. What might this be? Did you do better? 
 

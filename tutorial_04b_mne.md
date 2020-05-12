@@ -45,7 +45,7 @@ Minimum-norm estimate (MNE) use a cortical surface as source model. We will not 
 You can find the file *Sub02-oct-6-src.fif* in the tutorial data files.
 
 We read the *MNE-C* source space into MATLAB by using ``ft_read_headshape``:
-  
+
 ```matlab
 %% Read Freesurfer/MNE source space
 % Go to Freesurfer dir
@@ -58,17 +58,15 @@ sourcemodel = ft_read_headshape('Sub02-oct-6-src.fif', 'format', 'mne_source');
 cd(output_path)
 ````
 
-> **Question 4.3:** What does the ``sourcemodel`` structure contain?
+Note that the units are in meters. You can use ``ft_convert_units`` to make the units millimetres instead:
 
-Note that the units are in meters. You can use ``ft_convert_units`` to make the units milimeters instead:
-  
 ```matlab
 %% Convert units
 sourcemodel = ft_convert_units(sourcemodel, 'mm');
 ````
 
 You can plot the source model with the function ft_plot_mesh:
-  
+
 ```matlab
 %% Plot source space
 figure; ft_plot_mesh(sourcemodel, 'edgecolor', 'k'); camlight 
@@ -77,11 +75,11 @@ figure; ft_plot_mesh(sourcemodel, 'edgecolor', 'k'); camlight
 ![](figures/mne_sourcespace.png)
 
 Looks nice!
-  
+
 Each point on the grid represents a dipole in the MNE source reconstruction.
 
-> **Question 4.4:** How many dipoles will the MNE source reconstruction contain?
-  
+> **Question 4.3:** How many dipoles will the MNE source reconstruction contain?
+
 ## Load MEG/EEG data and headmodel
 ```matlab
 %% Load headmodel and MEG/EEG data
@@ -90,13 +88,13 @@ load('timelockeds.mat')
 ````
 
 Now you should have the three main ingredients for doing MNE source reconstruction with MEG:
-  
+
 1. Evoked MEG data.
 2. A volume model of the brain.  
 3. A source space model of the cortical surface.  
 
 Take a look at the headmodel and sourcemodel toghether:
-  
+
 ```matlab
 figure; hold on
 ft_plot_vol(headmodel_mne_meg, 'facealpha', 0.5, 'edgecolor', 'none');
@@ -105,9 +103,9 @@ ft_plot_mesh(sourcemodel, 'edgecolor', 'k'); camlight
 
 ![](figures/mne_sourcespace2.png)
 
-  
+
 ### Aligning source space and volume model
-  
+
 We have aligned the MRI that we used to create the volume model to the Neuromag coordinate system used by the MEG scanner. However, to make the cortical surface in Freesurfer, we had to convert the MRI to the SPM coordinate system and exported it to Freesurfer. When we imported the source space back into MATLAB, it kept this coordinate system. Our head model and source space are now in two different coordinate systems.
 
 To get the cortical surface back into the head, you need to transform the points in source space to the coordinate system of the head model. Load the transformation matrix of the resliced MRI in the SPM coordinate system (_transform_vox2spm_rs_). We will use this to create a transformation from the SPM coordinate system to the *neuromag* coordinate system. If you have run the prepare MNE source space tutorial, you must read the transformation files you created yourself.
@@ -137,7 +135,7 @@ sourcemodelT = ft_transform_geometry(T, sourcemodel);
 ````
 
 Take a look at the headmodel and sourcespace again:
-  
+
 ```matlab
 figure; hold on
 ft_plot_vol(headmodel_mne_meg, 'facealpha', 0.5, 'edgecolor', 'none');
@@ -158,7 +156,7 @@ disp('Done');
 ## MNE source reconstruction on MEG data
 
 Now we can create the leadfield and do the source reconstruction. Load the relevant files (if you do not already have then loaded):
-  
+
 ```matlab
 %% Load (or re-load) data
 load('timelockeds.mat')
@@ -168,7 +166,7 @@ disp('done')
 ````
 
 For this tutorial, we will use the stimulation of the index finger, corresponding the 4th condition:
-  
+
 ```matlab
 %% Select data (trigger = 4)
 data_meg = timelockeds{4};
@@ -220,14 +218,14 @@ source_mne  = ft_sourceanalysis(cfg,data_meg);
 
 Look at the ``source_mne`` structure; especially the ``source_mne.avg`` structure. 
 
-> **Question 4.5:** What is in the output structure, what is the dimension of the data? 
-  
+> **Question 4.4:** What is in the output structure, what is the dimension of the data? 
+
 ```matlab
 %% Save data
 save('source_mne.mat', 'source_mne'); disp('done')
 ```
 ## Visualize MNE
-  
+
 Plot the MNE source reconstruction on the grid. The ``source_mne`` structure contains values for all grid points and all time points. To visualize the source reconstruction on the grid, we need to decide what time points to plot.
 
 Go back to the evoked data to find some interesting times to plot using ``ft_multiplotER``. Since we used the gradiometers, we start by plotting the fields from the combined gradiometers. For example, let us compare the first peak around 50 ms and the large peak from 140-150 ms. Use the drag-and-click tool on the multiplot to plot topographical plots.
@@ -242,12 +240,12 @@ figure; ft_multiplotER(cfg, data_cmb);
 ````
 
 Find peaks in sensor space, look at the topographies, and try to guess what the sources might look like?
-  
+
 ![](figures/evoked_cmb_SI_and_SII.png)
 ![](figures/mne_gradTopo.png)
 
 Select the time-windows of interest and plot on the source space:
-  
+
 ```matlab
 %% Plot MNE source estimate
 % add to triangulation information source reconstruction for plotting
@@ -266,8 +264,8 @@ ft_sourceplot(cfg, source_mne)
 
 ![](figures/mne_50ms.png)
 
-> **Question 4.6:** By a glance, where do you see activated sources? How many different cortical patches are "active" at this time point?
-  
+> **Question 4.5:** By a glance, where do you see activated sources? How many different cortical patches are "active" at this time point?
+
 This image shows a single time point for all estimated sources. Each source (i.e., each grid-point on the cortical surface) has a time series of activation. You can in principle treat each source as its own "channel" -- you can view the activation of all sources over time, analogous to the activation in MEG or EEG channels. Use MATLAB to plot source activation across time (here only plotting every third time-series to save memory)
 
 ```matlab
@@ -305,13 +303,13 @@ ft_sourcemovie(cfg,source_mne);
 
 Now try to use ``ft_sourceplot`` and ``ft_sourcemovie`` (as above) to plot the source space topography of other time points and explore the source topo.
 
-> **Question 4.7:** Can you find the time-point corresponding to the image below? Try to look at the scalp topographies to get an educated guess about the time.  
+> **Question 4.6:** Can you find the time-point corresponding to the image below? Try to look at the scalp topographies to get an educated guess about the time.  
 
 ![](figures/mne_150ms.png)
 
-It is difficult to answer what type of source model and source reconstruction method that is better. The matter model depends on the question you want to answer and the kind of signal you are interested in for the particular answer. For example, if you know that a focal patch of cortex generates the signal, then a single dipole model might be sufficient, and you do not gain extra information by including the entire cortex. Similar, if we know that the process we are interested in requires distributed sources, then itis not valid to assume that a single dipole is sufficient.
+It is difficult to answer what type of source model and source reconstruction method that is better. The matter model depends on the question you want to answer and the kind of signal you are interested in for the particular answer. For example, if you know that a focal patch of cortex generates the signal, then a single dipole model might be sufficient, and you do not gain extra information by including the entire cortex. Similar, if we know that the process we are interested in requires distributed sources, then it is not valid to assume that a single dipole is sufficient.
 
-> **Question 4.8:** Around what times in the time-series might a dipole model be sufficient, and at what points is a distributed model better?
+> **Question 4.7:** Around what times in the time-series might a dipole model be sufficient, and at what points is a distributed model better?
 
 ## End of Tutorial 4B
 This tutorial demonstrates how to do MNE source reconstruction. Compared to the dipole (and beamformer, as you will see later) it differs in how to prepare the source model because of the assumptions behind MNE. But the additional assumption means that MNE is a quite robust source reconstruction method.

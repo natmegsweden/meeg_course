@@ -23,7 +23,6 @@ meg_path = fullfile(data_path, subjects_and_dates{1}, 'MEG');
 output_path = meg_path;
 
 cd(output_path)
-
 ````
 
 ## Load data
@@ -313,7 +312,7 @@ cfg.clusteralpha        = 0.05;
 cfg.clusterstatistic    = 'maxsum';
 cfg.tail                = 0;
 cfg.clustertail         = 0;
-cfg.alpha               = 0.25;
+cfg.alpha               = 0.025;
 cfg.channel             = 'megmag';
 cfg.numrandomization    = 1000;
 cfg.neighbours          = neighbours_mag;

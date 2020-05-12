@@ -522,7 +522,7 @@ subplot(2,1,2); plot(virt_evo.time, mn);
 
 ![](figures/virtual_ERF.png))
 
-> **Question 5.3:** The procedure to create a "virtual channel" is the same for magnetometers and EEG electrodes (though the actual calculation "under the hood" is different). Repeat the procedure to calculate the virtual electrode, but this time for the EEG data. Change all the `cfg.channel` from `meggrad` to `EEG*` and the ``cfg.senstype`` from `MEG` to `ÈEG`. Also, be aware that you should specify sensor information as `cfg.elec` rather than `cfg.grad` and points to the appropriate electrode structure.
+> **Question 5.4:** The procedure to create a "virtual channel" is the same for magnetometers and EEG electrodes (though the actual calculation "under the hood" is different). Repeat the procedure to calculate the virtual electrode, but this time for the EEG data. Change all the `cfg.channel` from `meggrad` to `EEG*` and the ``cfg.senstype`` from `MEG` to `ÈEG`. Also, be aware that you should specify sensor information as `cfg.elec` rather than `cfg.grad` and points to the appropriate electrode structure.
 >
 > Also remember to change the data selction in the beginning or you might end up with an error when applying the filter to the raw data:
 >
@@ -539,4 +539,3 @@ subplot(2,1,2); plot(virt_evo.time, mn);
 
 ## End of Tutorial 5
 Beamformers offers a variety of methods to analyse MEG (and to some extend EEG) data. You can use it to localize responses in the data, localize specific oscillatory activity, or to "reconstruct" signals *as if* they were measured at a given location. In the next tutorial, we will also look at how beamformers can be used in connectivity analysis.
-

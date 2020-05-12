@@ -62,8 +62,6 @@ hdr = ft_read_header(infile);
 ```
 The output of `ft_read_header` is here the struct `hdr`. This contains information about what channels is in the data. Explore the struct to find out what is in the data file.
 
-> **Question 1.1:** What type of data channels is in the data and what is the sampling frequency? 
-
 One thing to be aware of is that this only read the header information from one of the three `fif` files. The information about which channels are in the data is the same for all three files as it was recording in one session. But the duration and time-stamps of the recordings might be off because of the split files.
 
 Now read the headers of all three data files to find out how long the recording was and how much data we have. Make a preallocated cell array and loop over data files to read the header information into the cell array:
@@ -79,9 +77,16 @@ end
 ```
 Take a look at the information in the `hdrs` array (index cell arrays with curly brackets like this: `hdrs{1}`). Look at the channel information as you did before. The channel information should be the same for all three files.
 
-> **Question 1.2:** how many samples are there in the total of the entire recording? How long is the time of the recording?
-> 
->Hint: look at the fields `nSamples` and `Fs` to calculate the total duration of the recording session.
+> **Question 1.1:**
+>
+> * What type of data channels is in the data?  
+>
+> * What is the sampling frequency? 
+>
+> * How many samples are there in the entire recording? 
+> * How long is the time of the recording?
+>
+> Hint: look at the fields `nSamples` and `Fs` to calculate the total duration of the recording session.
 
 ## Read trigger values
 The data consists of tactile stimulation to all five fingers of the right hand. When each stimulation to a finger occurred is marked by a trigger in the data. We will use these triggers to select the parts of the data that we will analyze later on.
@@ -108,7 +113,7 @@ eve = ft_read_event(infile);
 ```
 Look at the `eve` structure:
 
-> **Question 1.3:** What are the values and the types of events in `eve` and how many events are there in total?
+> **Question 1.2:** What are the values and the types of events in `eve` and how many events are there in total?
 
 Because there are several trigger channels in the data, FieldTrip read all channels as independent channels and combine everything into a single struct. There are advantages of this, but for now, we are only interested in the composite trigger channel called `STI101`.
 
@@ -145,8 +150,6 @@ unique([eve.value])
 n  = histc([eve.value], vals);
 evetab = [vals; n];   % Make a quick table
 ```
-> **Question 1.4:** What is the count of each trigger value?
-
 In addition to knowing how many trials we have of each type, we also want to know how the trials are distributed over time. The time the trigger occurred is stored in `eve.sample`.
 
 If you, however, look at the minimum and maximum sample values in `eves{1}`, `eves{2}`, and `eves{3}`, e.g. like this (the square bracket `[...]` easily converts the struct into a vector that can be parsed to MATLAB functions):
@@ -261,7 +264,7 @@ data = ft_preprocessing(cfg);
 
 Look at data structure `data`.
 
-> **Question 1.5:** Which part/field/structure of the structure that contains the MEG and EEG data? Explain how the MEG/EEG is data stored in the `data` struct.
+> **Question 1.3:** Explain how the MEG/EEG is data stored in the `data` struct.
 
 As before, we once again only have read data from one of the three data files. The following code will loop over all three files and read data. For this next step, we also read all five conditions (i.e. tactile stimulation to each finger).
 
@@ -402,7 +405,7 @@ For now, only focus on the channels (top right plot). Mark the **channels** that
 % Get the names of the selected channels
 badchannels = setdiff(preprocessed_data_EEG.label, temp.label);
 ```
-> **Question 1.6:** Which channels did you mark as bad and why (you can use figures to illustrate)?
+> **Question 1.4:** Which channels did you mark as bad and why (you can use figures to illustrate)?
 
 ### Interpolate bad channels
 
@@ -476,7 +479,7 @@ If you have several experimental conditions, always collapse all conditions befo
 We will again use `ft_rejectvisual` and this time focus on the summary statistics over trials (bottom left plot). Mark the **trials** that you think are bad and ought to be removed. Drag across the "bad points" in the figure. Try to plot a few trials to see how the channels look. 
 There are 
 
-This is visually guided way to reject trials by removing those showing high variance. You can also remove specific artifacts by using the the `ft_artifact_xxx` and `ft_rejectartifact` functions. This is a more automated way to do it.
+This is visually guided way to reject trials by removing those showing high variance. You can also remove specific artefacts by using the the `ft_artifact_xxx` and `ft_rejectartifact` functions. This is a more automated way to do it.
 
 ```Matlab
 %% Remove bad trials
@@ -502,7 +505,7 @@ cleaned_data = ft_rejectvisual(cfg, cleaned_data);
 
 ## Adjust for the offset between trigger and the actual delivery of the stimulation
 
-The trigger for the delivery of the tactile stimulation is sent with millisecond precision to the stimulation device and the MEG data acquisition software. However, because we cannot have electrical parts within the magnetical shield room, the stimulus is powered by pressurized air. This means that there is a delay from the device that received the trigger to the actual delivery of the sensory stimulation. The delay has been measured with an accelerometer to 41 ms. There is no way to know this from the data, and if we did not know, we might think that this subject had oddly slow event-related activity.
+The trigger for the delivery of the tactile stimulation is sent with millisecond precision to the stimulation device and the MEG data acquisition software. However, because we cannot have electrical parts within the magnetically shield room, the stimulus is powered by pressurized air. This means that there is a delay from the device that received the trigger to the actual delivery of the sensory stimulation. The delay has been measured with an accelerometer to 41 ms. There is no way to know this from the data, and if we did not know, we might think that this subject had oddly slow event-related activity.
 
 As a final step, we correct the onset of the trial, i.e. move the offset (0 ms) 41 ms forward in time. This is a processing step specific to this data. For other stimulus equipment, the delay will be different. Knowing the delay in the stimulus equipment and correcting for it in the analysis is important.
 
