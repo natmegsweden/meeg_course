@@ -209,10 +209,10 @@ cfg = [];
 cfg.method              = 'montecarlo';
 cfg.correctm            = 'cluster';
 cfg.statistic           = 'ft_statfun_indepsamplesT';
-cfg.alpha               = 0.05;
+cfg.alpha               = 0.025;
 cfg.tail                = 0;
 cfg.clusterstatistic    = 'maxsum';
-cfg.clusteralpha        = 0.25;
+cfg.clusteralpha        = 0.05;
 cfg.clustertail         = 0;
 cfg.numrandomization    = 1000;
 ````
