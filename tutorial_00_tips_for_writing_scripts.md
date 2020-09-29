@@ -151,4 +151,5 @@ There are also a lot of good resources for tips and tricks on MEG/EEG analysis. 
 ***
 
 [^1]: van Vliet, M. (2019). [Guidelines for data analysis scripts](https://arxiv.org/pdf/1904.06163.pdf). *ArXiv:1904.06163*. 
+
 [^2]: [The Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) is an initiative to standardize how neuroimaging data is stored to allow easy sharing of data across research groups and sites. Originally BIDS was for sharing MRI data but has since been expanded for MEG (and by extension EEG). Niso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., T. Moreau, J., Oostenveld, R., Schoffelen, J.-M., Tadel, F., Wexler, J., & Baillet, S. (2018). [MEG-BIDS, the brain imaging data structure extended to magnetoencephalography](https://doi.org/10.1038/sdata.2018.110). *Scientific Data, 5(1)*.
