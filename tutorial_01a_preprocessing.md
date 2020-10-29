@@ -507,7 +507,7 @@ cleaned_data = ft_rejectvisual(cfg, cleaned_data);
 
 The trigger for the delivery of the tactile stimulation is sent with millisecond precision to the stimulation device and the MEG data acquisition software. However, because we cannot have electrical parts within the magnetically shield room, the stimulus is powered by pressurized air. This means that there is a delay from the device that received the trigger to the actual delivery of the sensory stimulation. The delay has been measured with an accelerometer to 41 ms. There is no way to know this from the data, and if we did not know, we might think that this subject had oddly slow event-related activity.
 
-As a final step, we correct the onset of the trial, i.e. move the offset (0 ms) 41 ms forward in time. This is a processing step specific to this data. For other stimulus equipment, the delay will be different. Knowing the delay in the stimulus equipment and correcting for it in the analysis is important.
+As a final step, we correct the onset of the trial, i.e. move the offset (0 ms) 41 ms forward in time. This is a processing step specific to this data due to the specific stimulation equipment we used in the experiment. **Warning: do not uncritically copy/paste this step into your analysis scripts for your own data**.
 
 ```matlab
 %% Adjust offset
