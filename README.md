@@ -4,7 +4,7 @@ Here you find the tutorials for the doctoral course *Imaging in Neuroscience: wi
 
 All tutorials are example of how to analyse MEG/EEG signals. This is not meant as an exhaustive account of how to analyse MEG/EEG data. The material is design to give an overview of different aspects of MEG/EEG data analysis and useable example code on how to do the analysis. 
 
-To run the tutorial you need MATLAB (www.mathworks.com), FieldTrip (www.fieldtriptoolbax.org), and the tutorial data. All tutorials use FieldTrip. To learn more about FieldTrip, we recommend looking at the FieldTrip webpage for documentation and many more tutorial examples.
+To run the tutorial you need MATLAB (www.mathworks.com), FieldTrip (www.fieldtriptoolbox.org), and the tutorial data. All tutorials use FieldTrip. To learn more about FieldTrip, we recommend looking at the FieldTrip webpage for documentation and many more tutorial examples.
 
 ## Overview
 
