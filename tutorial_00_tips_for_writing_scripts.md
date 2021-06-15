@@ -5,7 +5,7 @@ Writing data analysis scripts can quickly become a mess! There are many steps to
 Below you find a quick list of recommendations to make it easier for you to write useful analysis scripts. The recommendations are based on van Vliet (2019)[^1] and the MEG-BIDS guidelines[^2]. I recommend that you take a look at these when you have to write your own analysis scripts.
 
 ## Comment your code
-In MATLAB you write comments with the dollar symbol `%`. Use this to write short explanations of what section or even single lines of code in your scripts do.
+In MATLAB you write comments with the percentage symbol `%`. Use this to write short explanations of what section or even single lines of code in your scripts do.
 
 There are several reasons why you should comment your scripts. The first reason is that it makes it much easier to go back to your old scripts and know what they are supposed to do. What is self-evident when you first write your code might not be evident years later. The time you spent on writing comments in your code will come back later. The second reason for commenting your code is the usefulness if you are part of collaboration where you have to share data and scripts. What is self-evident for you might not be evident for other people. The third reason is that there is an increase in demand for sharing analysis scripts when publishing scientific articles, either for review purposes or demand by publishers that it has to be made available upon publication. Make it easier for the reviewers to understand what you are doing with your data. And finally, writing what the code is supposed to do helps you identify code that is not working correctly.
 
@@ -29,7 +29,7 @@ For this tutorial, you will use the toolbox FieldTrip to analyses MEG/EEG data. 
 The start of my script my look like this:
 
 ```Matlab
-resotredefaultpath
+restoredefaultpath
 addpath('/home/mikkel/fieldtrip')       % Change to your path
 ft_defaults
 ```
@@ -115,9 +115,9 @@ We can then setup subject and recording specific paths as below. The cell array 
 %% Define subjects and sessions
 
 subjects_and_dates = ...
-                    {
-                        'NatMEG_0177/170424/'
-                    };
+             {
+                'NatMEG_0177/170424/'
+             };
 
 subjects = ...
             {
