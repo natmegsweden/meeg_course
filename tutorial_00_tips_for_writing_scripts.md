@@ -2,10 +2,25 @@
 
 Writing data analysis scripts can quickly become a mess! There are many steps to go from raw MEG/EEG data to the final results. It is essential to keep track of what processing step that goes before and after another. Know what data that should be read in one step, saved to memory, and then read in the next step. If we mess this up, we might end up with invalid results. And it is easy to  make errors: read the wrong data files, using different versions of toolboxes, working in the wrong directory, etc., especially in MEG/EEG data processing where there are several manual steps and we often have to go back to re-run analysis.
 
-Below you find a quick list of recommendations to make it easier for you to write useful analysis scripts. The recommendations are based on van Vliet (2019)[^1] and the MEG-BIDS guidelines[^2]. I recommend that you take a look at these when you have to write your own analysis scripts.
+Below you find a quick list of recommendations to make it easier for you to write useful analysis scripts. The recommendations are based on van Vliet (2020)[^1] and the MEG-BIDS guidelines[^2]. I recommend that you take a look at these when you have to write your own analysis scripts.
 
 ## Comment your code
 In MATLAB you write comments with the percentage symbol `%`. Use this to write short explanations of what section or even single lines of code in your scripts do.
+
+For example:
+
+````matlab
+%% Calculate PSD: multitaper
+cfg = [];
+cfg.output    = 'pow';          % Return PSD
+cfg.channel   = 'all';  		  % Calculate for all channels
+cfg.method    = 'mtmfft';       % Use multitaper FFT
+cfg.taper     = 'dpss';         % Multitapers based on Slepian sequences
+cfg.tapsmofrq = 2;              % Smoothing +/- 2 Hz
+cfg.foilim    = [1 95];         % Frequency 1 to 95 Hz
+cfg.pad       = 'nextpow2';     % Padding option
+psd_dpss = ft_freqanalysis(cfg, epochs);
+````
 
 There are several reasons why you should comment your scripts. The first reason is that it makes it much easier to go back to your old scripts and know what they are supposed to do. What is self-evident when you first write your code might not be evident years later. The time you spent on writing comments in your code will come back later. The second reason for commenting your code is the usefulness if you are part of collaboration where you have to share data and scripts. What is self-evident for you might not be evident for other people. The third reason is that there is an increase in demand for sharing analysis scripts when publishing scientific articles, either for review purposes or demand by publishers that it has to be made available upon publication. Make it easier for the reviewers to understand what you are doing with your data. And finally, writing what the code is supposed to do helps you identify code that is not working correctly.
 
@@ -34,17 +49,15 @@ addpath('/home/mikkel/fieldtrip')       % Change to your path
 ft_defaults
 ```
 
-If you have several variables with the same names, it might also be good to add 
+If you have several variables with the same names, it might also be good to add the following before the above code, to clear all figures and variables from your workspace.
 ```matlab
 close all       % Close all open windows
 clear all       % Clear all variables from the workspace
 ````
-before the above code, to clear all figures and variables from your workspace.
-
 After this, we are ready to begin our script, and we will use the version of FieldTrip that we know we have at the given location.
 
 ## Run all analysis with one version of the software
-Toolboxes for data analysis gets updated regularly. FieldTrip, for example, is updated with a new version daily to keep the functionality up to date or to fix bugs in the code that users might have occurred. However, do not update FieldTrip daily! When you begin a project, make sure that all data is processed with the same version of the software that you use. If you need to update, which you sometimes need to do, make sure that your code is backwards compatible with the updated toolbox. If you need to update, better re-run everything.
+Toolboxes for data analysis gets updated regularly. FieldTrip, for example, is updated with a new version daily to keep the functionality up to date or to fix bugs in the code that users might have occurred. However, do not update FieldTrip daily! When you begin a project, make sure that all data is processed with the same version of the software that you use. If you need to update (which you sometimes need to do) make sure that your code is backwards compatible with the updated toolbox. If you need to update, better re-run everything.
 
 If you have many ongoing projects, it is useful to have several versions to make sure that you use the same versions for each project.
 
@@ -65,10 +78,10 @@ S05_statistics.m
 ````
 
 ## Save intermediate results
-Save data after each processing step. Especially before and after steps that require manual intervention. This makes it easier to go back and redo individual steps without the need to re-run everything again.
+Save data after each processing step. For example, each script above will save output to disk. Then the next step then reads the output from the previous step. Especially before and after steps that require manual intervention. This makes it easier to go back and redo individual steps without the need to re-run everything again.
 
 ## Visualize results of intermediate processing steps
-Thought the tutorial you will be asked a lot to plot data and inspect data structures. This is not just to keep you occupied! It is good practice to visuale the outcome of each processing step (when you also would save the data). When you visualize the output of each processing step, it is easy to spot errors as they occur rahter than only noticing them in the end results—if you even notice them at all by then.
+Thought the tutorial you will be asked a lot to plot data and inspect data structures. This is not just to keep you occupied! It is good practice to visualize the outcome of each processing step (when you also would save the data). When you visualize the output of each processing step, it is easy to spot errors as they occur rather than only noticing them in the end results—if you even notice them at all by then.
 
 ## Use consistent filenames
 Do not rename files each time you run the analysis. Use a consistent way to easy read what subject, session, and processing step the data belongs to. For example, output files from an analysis might look like this:
@@ -113,7 +126,6 @@ We can then setup subject and recording specific paths as below. The cell array 
 
 ```Matlab
 %% Define subjects and sessions
-
 subjects_and_dates = ...
              {
                 'NatMEG_0177/170424/'
@@ -150,6 +162,6 @@ There are also a lot of good resources for tips and tricks on MEG/EEG analysis. 
 
 ***
 
-[^1]: van Vliet, M. (2019). [Guidelines for data analysis scripts](https://arxiv.org/pdf/1904.06163.pdf). *ArXiv:1904.06163*. 
+[^1]: van Vliet, M. (2020). Seven quick tips for analysis scripts in neuroimaging. *PLOS Computational Biology*, *16*(3), e1007358. https://doi.org/10.1371/journal.pcbi.1007358van
 
 [^2]: [The Brain Imaging Data Structure (BIDS)](https://bids.neuroimaging.io/) is an initiative to standardize how neuroimaging data is stored to allow easy sharing of data across research groups and sites. Originally BIDS was for sharing MRI data but has since been expanded for MEG (and by extension EEG). Niso, G., Gorgolewski, K. J., Bock, E., Brooks, T. L., Flandin, G., Gramfort, A., Henson, R. N., Jas, M., Litvak, V., T. Moreau, J., Oostenveld, R., Schoffelen, J.-M., Tadel, F., Wexler, J., & Baillet, S. (2018). [MEG-BIDS, the brain imaging data structure extended to magnetoencephalography](https://doi.org/10.1038/sdata.2018.110). *Scientific Data, 5(1)*.
