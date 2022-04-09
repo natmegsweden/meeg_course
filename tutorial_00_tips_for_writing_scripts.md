@@ -1,4 +1,4 @@
-﻿# Tips for writing useful analysis scripts
+# Tips for writing useful analysis scripts
 
 Writing data analysis scripts can quickly become a mess! There are many steps to go from raw MEG/EEG data to the final results. It is essential to keep track of what processing step that goes before and after another. Know what data that should be read in one step, saved to memory, and then read in the next step. If we mess this up, we might end up with invalid results. And it is easy to  make errors: read the wrong data files, using different versions of toolboxes, working in the wrong directory, etc., especially in MEG/EEG data processing where there are several manual steps and we often have to go back to re-run analysis.
 
@@ -13,7 +13,7 @@ For example:
 %% Calculate PSD: multitaper
 cfg = [];
 cfg.output    = 'pow';          % Return PSD
-cfg.channel   = 'all';  		  % Calculate for all channels
+cfg.channel   = 'all';  		% Calculate for all channels
 cfg.method    = 'mtmfft';       % Use multitaper FFT
 cfg.taper     = 'dpss';         % Multitapers based on Slepian sequences
 cfg.tapsmofrq = 2;              % Smoothing +/- 2 Hz
@@ -41,7 +41,7 @@ plot(x, y, 'or')
 ## Define the paths and toolboxes at the beginning of the script
 For this tutorial, you will use the toolbox FieldTrip to analyses MEG/EEG data. FieldTrip is written in MATLAB but is not a part of MATLAB. We , therefore, need to make sure that MATLAB has FieldTrip in its PATH definition to use the functions. The same applies if you use other toolboxes. This is simple: simply use the MATLAB function  `addpath( ... )` to add the path where you downloaded FieldTrip. If you have several versions of FieldTrip or have used other toolboxes before you run this script, it is also a good idea to restore the PATH with the function `resotredefaultpath`
 
-The start of my script my look like this:
+The start of my script may look like this:
 
 ```Matlab
 restoredefaultpath
@@ -94,7 +94,7 @@ sub01-tfr.mat
 ...
 ```
 
-Note that each file has the id of the subject (`sub01`) in all filenames and a string indicating what analysis step it belongs to. 
+Note that each file has the id of the subject (`sub01`) in all filenames and a string indicating what analysis step it belongs to.
 
 ## Store data separate by subject and session
 When you have data from multiple subjects resist the temptation to throw all data into one folder. Instead, create a project folder where you have one folder per subjects. And if you have more than one session per subject, you should then have separate sub-folders in the subject folder:
