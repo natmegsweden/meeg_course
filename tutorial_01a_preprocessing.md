@@ -552,7 +552,7 @@ cfg.numcomponent = 40;          % Can be up to N channels
 comp           = ft_componentanalysis(cfg, cleaned_downsampled_data);
 
 %% Save comp (good for bookkeeping)
-save(fullfile(meg_dir, 'comp.mat'), 'comp')
+save(fullfile(meg_path, 'comp.mat'), 'comp')
 ```
 Plot the components:
 
@@ -785,11 +785,11 @@ The variables `eog1_comp_idx` and `eog2_comp_idx` are the indexes of the compone
 % look at the coherence spectrum between all components and the EOG
 figure;
 subplot(3,2,1); title('EOG001'); xlabel('freq'); ylabel('coh');
-plot(fdcomp_eog1.freq, abs(fdcomp.cohspctrm)); hold on
-plot([min(fdcomp.freq),max(fdcomp.freq)],[cutoff, cutoff], 'k--');
+plot(fdcomp_eog1.freq, abs(fdcomp_eog1.cohspctrm)); hold on
+plot([min(fdcomp_eog1.freq),max(fdcomp_eog1.freq)],[cutoff, cutoff], 'k--');
 subplot(3,2,2); title('EOG002'); xlabel('freq'); ylabel('coh');
-plot(fdcomp_eog2.freq, abs(fdcomp.cohspctrm)); hold on
-plot([min(fdcomp.freq),max(fdcomp.freq)],[cutoff, cutoff], 'k--');
+plot(fdcomp_eog2.freq, abs(fdcomp_eog2.cohspctrm)); hold on
+plot([min(fdcomp_eog2.freq),max(fdcomp_eog2.freq)],[cutoff, cutoff], 'k--');
 subplot(3,2,3); xlabel('freq'); ylabel('comp');
 imagesc(abs(fdcomp_eog1.cohspctrm));
 subplot(3,2,4); xlabel('freq'); ylabel('comp');
