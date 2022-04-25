@@ -343,7 +343,7 @@ timelock = ft_timelockanalysis([], epochs);
 
 % Remove phase-locked response from each trial
 epochs_nophase = epochs;        % Copy structure
-for i = 1:length(epochs)
+for i = 1:length(epochs.trial)
     epochs_nophase.trial{i} = epochs.trial{i} - timelock.avg;
 end
 ```
