@@ -41,7 +41,7 @@ load(fullfile(output_path, 'cleaned_downsampled_data.mat')); disp('Done');
 > **Question 2.1:** previosuly we downsampled data to 200Hz. As a consequence hereof, what is the highest frequency we can investigate in this data?
 
 ## Select data
-In the following tutorial, we will only analyse the conditions where the thumb was stimulated, i.e. the condition corresponding to trigger value `16`. Use _ft_selectdata_ to select the conditions with trigger 8:
+In the following tutorial, we will only analyse the conditions where the thumb was stimulated, i.e. the condition corresponding to trigger value `16`. Use _ft_selectdata_ to select the conditions with trigger 16:
 
 ```matlab
 %% Select data
@@ -350,6 +350,7 @@ end
 
 Now calculate TFR with wavelets as before:
 
+```matlab
 %% TFR with wavelets
 cfg = [];
 cfg.method      = 'wavelet';
