@@ -128,6 +128,8 @@ When you have defined the axes, it is a good idea to save the MRI.
 save(fullfile(output_path, 'mri_coordsys'), 'mri_coordsys'); disp('done');
 ```
 
+Make sure to close the figure before going to the next step (interactive figures can interfere with one another).
+
 ## Co-register MRI to MEG/EEG data based on fiducials
 Now we will co-register the MRI image to the head points. In FieldTrip this is done in a step-wise procedure.
 
