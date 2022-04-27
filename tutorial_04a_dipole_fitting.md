@@ -42,7 +42,7 @@ Load the required data files for dipole fits:
 ```matlab
 %% go to relevant path and load data
 cd(output_path)
-disp('Loading timelockeds and headmodel...)'
+disp('Loading timelockeds and headmodel...')
 load('timelockeds.mat')
 load('headmodel_meg.mat')
 load('headmodel_eeg.mat')
@@ -126,7 +126,7 @@ cfg.channel         = 'megmag';
 
 leadfield_mag = ft_prepare_leadfield(cfg, timelockeds{4});
 
-%% Make leadfields for MEG: magnetometers
+%% Make leadfields for MEG: gradiometers
 cfg.senstype        = 'meg';
 cfg.grad            = timelockeds{4}.grad;
 cfg.headmodel       = headmodel_meg;
