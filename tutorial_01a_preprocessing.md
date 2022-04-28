@@ -834,7 +834,7 @@ reject_comp = unique([ecg_comp_idx; eog1_comp_idx; eog2_comp_idx]);
 cfg = [];
 cfg.component   = reject_comp;
 cfg.channel     = 'MEG';
-cfg.updatesens  = 'yes';
+cfg.updatesens  = 'no';
 icacleaned_downsampled_data = ft_rejectcomponent(cfg, comp, raw_flt);
 ```
 
