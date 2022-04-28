@@ -141,7 +141,7 @@ Plot the grids and the headmodel:
 %% plot grid and headmodel
 figure; hold on
 ft_plot_mesh(leadfield_mag);
-ft_plot_vol(headmodel_meg);
+ft_plot_headmodel(headmodel_meg);
 ```
 
 ![](figures/brain_inside_grid.png)
@@ -200,7 +200,7 @@ load('mri_resliced_cm.mat'); disp('done');
 figure; hold on
 
 ft_plot_dipole(dipole_mag_early.dip.pos(1,:), mean(dipole_mag_early.dip.mom(1:3,:),2), 'color', 'r')
-pos = mean(source_mag.dip.pos,1);
+pos = mean(dipole_mag_early.dip.pos,1);
 ft_plot_slice(mri_resliced_cm.anatomy, 'transform', mri_resliced_cm.transform, 'location', pos, 'orientation', [1 0 0], 'resolution', 0.1)
 ft_plot_slice(mri_resliced_cm.anatomy, 'transform', mri_resliced_cm.transform, 'location', pos, 'orientation', [0 1 0], 'resolution', 0.1)
 ft_plot_slice(mri_resliced_cm.anatomy, 'transform', mri_resliced_cm.transform, 'location', pos, 'orientation', [0 0 1], 'resolution', 0.1)
@@ -249,6 +249,7 @@ figure
 cfg = [];
 cfg.zlim        = [-6e-14 6e-14];       % Color limits
 cfg.layout      = 'neuromag306mag.lay'; % layour for magnetometers
+cfg.figure      = gcf;
 cfg.parameter   = 'Vdata';
 subplot(1,3,1); ft_topoplotER(cfg,temp); title('Data');
 cfg.parameter   = 'Vmodel';
@@ -277,7 +278,6 @@ cfg = [];
 cfg.gridsearch      = 'yes';            % search the grid for an optimal starting point
 cfg.numdipoles      = 2;                % N dipoles in model (we expect bilateral  activity)
 cfg.symmetry        = 'x';              % Symmetrical dipoles
-cfg.grid            = leadfield_mag;    % supply the grid/leadfield
 cfg.headmodel       = headmodel_meg;    % supply the headmodel
 cfg.dipfit.metric   = 'rv';             % the metric to minimize
 cfg.model           = 'regional';       % Assume that the dipole has a fixed position
@@ -466,6 +466,7 @@ for dipole_type_index = 1:length(all_dipoles)
         axis tight
         axis off
     end
+end
 ```
 
 Dipole LATE for magnetometers. We get a bad fit for the SII:
