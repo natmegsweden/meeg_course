@@ -40,7 +40,7 @@ output_path = meg_path;                 % Save in MEG folder
 ```
 
 ## Import source space
-Minimum-norm estimate (MNE) use a cortical surface as source model. We will not run the preparation of the cortical surface as it takes about 10 hours. You can find tutorial documentation on how the cortical surface source model was made in Tutorial 99. In the tutorial, you can read how to export MRI to *Freesurfer* to extract the cortical surface, and set up a source model with *MNE-C*. In short, the  procedure creates a set of point equally sampled across the cortical surface. These points are our source model for MNE. 
+Minimum-norm estimate (MNE) use a cortical surface as source model. We will not run the preparation of the cortical surface as it takes about 10 hours. You can find tutorial documentation on how the cortical surface source model was made in Tutorial 99. In the tutorial, you can read how to export MRI to *Freesurfer* to extract the cortical surface, and set up a source model with *MNE-C*. In short, the  procedure creates a set of points equally sampled across the cortical surface. These points are our source model for MNE. 
 
 You can find the file *Sub02-oct-6-src.fif* in the tutorial data files.
 
@@ -97,7 +97,7 @@ Take a look at the headmodel and sourcemodel toghether:
 
 ```matlab
 figure; hold on
-ft_plot_vol(headmodel_mne_meg, 'facealpha', 0.5, 'edgecolor', 'none');
+ft_plot_headmodel(headmodel_mne_meg, 'facealpha', 0.5, 'edgecolor', 'none');
 ft_plot_mesh(sourcemodel, 'edgecolor', 'k'); camlight 
 ````
 
@@ -118,7 +118,9 @@ Note: the following step assumes that all units are in millimetres. Make sure th
 load transform_vox2spm.mat
 
 % Load segmented mri and get transform
+cd(mri_path)
 load mri_segmented_mne.mat
+cd(output_path)
 
 % Get transformation matrix from voxel to neuromag-coordsys
 transform_vox2neuromag = mri_segmented_mne.transform;
@@ -138,7 +140,7 @@ Take a look at the headmodel and sourcespace again:
 
 ```matlab
 figure; hold on
-ft_plot_vol(headmodel_mne_meg, 'facealpha', 0.5, 'edgecolor', 'none');
+ft_plot_headmodel(headmodel_mne_meg, 'facealpha', 0.5, 'edgecolor', 'none');
 ft_plot_mesh(sourcemodelT, 'edgecolor', 'k'); camlight 
 
 ````
@@ -161,7 +163,7 @@ Now we can create the leadfield and do the source reconstruction. Load the relev
 %% Load (or re-load) data
 load('timelockeds.mat')
 load('sourcemodelT.mat')
-load(' headmodel_mne_meg.mat')
+load('headmodel_mne_meg.mat')
 disp('done')
 ````
 
