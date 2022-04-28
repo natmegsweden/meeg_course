@@ -36,9 +36,6 @@ mri_path = fullfile(data_path, subjects_and_dates{1}, 'MRI');
 
 % output_path = meg_path;         % Save in MEG folder
 output_path = meg_path;         % Save in MRI folder
-
-%% Go to work dir
-cd(output_path)
 ```
 
 ## Load files necessary for the beamforming
@@ -152,7 +149,7 @@ ft_sourceplot(cfg,source_int);
 The centre of the head bias means that the source reconstructions in themselves are not readily interpretable. To compensate, we will calculate a contrast between the time of interest and a baseline period. However, to avoid bias between the two different beamformer source reconstructions due to different filters, we create a common filter consisting of a data segment that contains both time-windows-
 
 ```matlab
-%& Select data
+%% Select data
 cfg = [];
 cfg.trials = cleaned_downsampled_data.trialinfo == 16;
 cfg.latency = [-0.200 0.200];
@@ -235,7 +232,7 @@ Remember to save:
 
 ```matlab
 %% Save
-save(fillfile(output_path, 'contrast_lcmv.mat'), 'contrast_lcmv'); disp('done');
+save(fullfile(output_path, 'contrast_lcmv.mat'), 'contrast_lcmv'); disp('done');
 ```
 
 Now you can plot the contrsted source reconstruction, similar to thow you did before: by first interpolate onto the structural MRI with `ft_sourceinterpolate` and then plot with `ft_sourceplot`:
@@ -314,7 +311,7 @@ cfg.foilim     = [16 16];       % 16 Hz
 cfg.keeptrials = 'yes';
 cfg.pad        = 'nextpow2';
 
-fouriers_rebound  = ft_freqanalysis(cfg, tois_rebound;
+fouriers_rebound  = ft_freqanalysis(cfg, tois_rebound);
 fouriers_baseline = ft_freqanalysis(cfg, tois_baseline);
 fouriers_combined = ft_freqanalysis(cfg, tois_combined);   
 ```
@@ -371,7 +368,7 @@ Interpolate pow data onto the MRI of the participant to plot the results:
 
 ```matlab
 %% Load MRI
-load(mri_resliced_cm.mat)
+load('mri_resliced_cm.mat')
 
 %% contrast interpolated onto MRI
 cfg = [];
@@ -412,8 +409,8 @@ For the last beamformer application, we will create a virtual electrode in the p
 
 ```matlab
 %% Find peak source
-[~, idx] = max(contrast.avg.pow);
-maxpos = contrast.pos(idx,:);
+[~, idx] = max(contrast_dics.avg.pow);
+maxpos = contrast_dics.pos(idx,:);
 ```
 
 For the virtual electrode, we want to reconstruct the single trial data at the selected location. To do this, we will create a new forward model. This time, rather than creating a source space that covers the whole brain or the brain surface, we create a source space that only contains our desired location.
