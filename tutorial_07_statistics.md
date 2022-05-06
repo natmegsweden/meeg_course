@@ -109,7 +109,7 @@ evo_both_mag = ft_selectdata(cfg, evo_both);
 toi = evo_both_mag.time > t_win(1) & evo_both_mag.time < t_win(2);
 
 % Find peak channel
-[mx1, idx1] = max(mean(evo_both_mag.avg(:,toi),2))
+[mx1, idx1] = max(mean(evo_both_mag.avg(:,toi),2));
 pk_chan = evo_both_mag.label(5);
 ````
 
@@ -222,7 +222,7 @@ The code above will tell ``ft_timelockstatistics`` what test to do. The final st
 Here we use the single trials as the unit of observation. In a real experiment, it will most likely be the individual subjects.
 
 ````matlab
-% Desing matrix
+% Design matrix
 tmp_ivar  = [ones(size(chandat_thumb.trial,2),1); ones(size(chandat_little.trial,2),1)*2];
 tmp_unit = [1:(size(chandat_thumb.trial,2)+size(chandat_little.trial,2))];
 design = [tmp_ivar, tmp_unit'];
