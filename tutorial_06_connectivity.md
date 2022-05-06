@@ -60,7 +60,6 @@ Then select parts of the signals in which we will calculate connectivity. The co
 %% Select data
 cfg = [];
 cfg.trials = cleaned_downsampled_data.trialinfo == 8;
-cfg.latency = [0.000 0.500];
 
 data = ft_selectdata(cfg, cleaned_downsampled_data);
 ````
@@ -68,19 +67,19 @@ data = ft_selectdata(cfg, cleaned_downsampled_data);
 Estimate the evoked response and identify channels that you want to calculate the connectivity. Try to select channels that show significant evoked response and one that does not show that much evoked activity.
 
 ````matlab
-Estimate the evoked/averaged 
-%% evoked
+%% Evoked
 cfg = [];
 cfg.covariance          = 'yes';
 cfg.covariancewindow    = 'prestim';
 cfg.preproc.demean      = 'yes';
+cfg.latency = [0.000 0.500];
 
 evoked = ft_timelockanalysis(cfg, data);
 
-cfg = []
+cfg = [];
 cfg.layout              = 'neuromag306mag';
 cfg.showlabels          = 'yes';        % Show channel names
-cfg.comment             = 'no'
+cfg.comment             = 'no';
 ft_multiplotER(cfg, evoked)
 ````
 
@@ -92,7 +91,7 @@ Write the sensors you pick in an array. Note that the results of the following s
 
 ```Matlab
 %% sensors
-sensors = {'MEG0221', 'MEG1311', 'MEG2121'}
+sensors = {'MEG0221', 'MEG1311', 'MEG2121'};
 ````
 
 Then select only data from those three channels with `ft_selectdata`:
@@ -108,14 +107,14 @@ You can inspect the selcted channels with `ft_databrowser`:
 
 ````matlab
 %% Inspect selection
-cfg = []
+cfg = [];
 cfg.viewmode = 'vertical';  % you can also specify 'butterfly'
 ft_databrowser(cfg, slct_data)
 ````
 
 ![](figures/chan_sel_view.png)
 
-FOr the first connectivity estimation, we will calculate the coherence between the three channels. Coherence between signals is estimated by calculating the cross-spectral density (CSD) between the signals and dividing by the power spectral densities (PSD) of the signals. Coherence is a measure in the frequency-domain and is calculated for each frequency bin.
+For the first connectivity estimation, we will calculate the coherence between the three channels. Coherence between signals is estimated by calculating the cross-spectral density (CSD) between the signals and dividing by the power spectral densities (PSD) of the signals. Coherence is a measure in the frequency-domain and is calculated for each frequency bin.
 
 To calculate the coherence between the signals, we first do a Fourier-transform of the data. As is the previous tutorials,we use `ft_freqanalysis` and specify that the output should be the complex-valued Fourier decomposition (``cfg.output = 'fourier'``;):
 
@@ -133,19 +132,20 @@ slct_freq = ft_freqanalysis(cfg, slct_data);
 Now we are ready to calculate the coherence. To do connectivity analysis, we use the FieldTrip function `ft_connectivityanalysis`. `ft_connectivityanalysis` is a high-level function that supports many different connectivity methods. Take a look at the documentation to see how you can calculate connectivity with FieldTrip. In this example, we specify that to use coherence (`coh`).
 
 ````matlab
-% Coherence
+%% Coherence
 cfg = [];
 cfg.method = 'coh';
-slct_coh = ft_connectivityanalysis(cfg, slct_freq)
+slct_coh = ft_connectivityanalysis(cfg, slct_freq);
 ````
 
 This calculates coherence between all three channels for all the frequencies we selected above when we called `ft_freqanalysis`-. Let us visualise the coherence spectra:
 
 ````matlab
+%% Plot coherence
 cfg = [];
 cfg.parameter = 'cohspctrm';
 cfg.zlim      = [0 1];
-ft_connectivityplot(cfg, slct_con);
+ft_connectivityplot(cfg, slct_coh);
 ````
 
 ![](figures/connectivity1.png)
@@ -186,14 +186,14 @@ cfg.channelcmb      = {ref_chan 'megmag'};
 coh_meg = ft_connectivityanalysis(cfg, data_freq);
 ````
 
-This time, we will visualise the results on the sensor topography with `ft_multiplotER`.
+This time, we will visualise the results on the sensor topography with `ft_topoplotER`.
 
 ````matlab
 cfg = [];
 cfg.layout      = 'neuromag306mag';
 cfg.parameter   = 'cohspctrm';
 cfg.refchannel  = ref_chan;
-ft_multiplotER(cfg, coh_meg)
+ft_topoplotER(cfg, coh_meg)
 ````
 
 Notice that the channel you selected is missing. Use the drag option to zoom in on different frequency bands. E.g. below the beta band:
@@ -207,7 +207,7 @@ You might notice that the high coherence values tend to cluster around the chann
 Try another connectivity measrue: the imaginary part of the coherence:
 
 ````matlab
-% Img coh
+%% Img coh
 cfg = [];
 cfg.method      = 'coh';
 cfg.complex     = 'absimag';
@@ -218,11 +218,11 @@ icoh_meg = ft_connectivityanalysis(cfg, data_freq);
 
 Plot as before and selct a frequencyband camparable to the plot you made above:
 ````matlab
-cfg = []
+cfg = [];
 cfg.layout      = 'neuromag306mag';
-cfg.parameter   = 'cohspctrm'
-cfg.refchannel  = ref_chan
-ft_multiplotER(cfg, icoh_meg)
+cfg.parameter   = 'cohspctrm';
+cfg.refchannel  = ref_chan;
+ft_topoplotER(cfg, icoh_meg)
 ````
 ![](figures/coh_2.png)
 
@@ -232,7 +232,7 @@ ft_multiplotER(cfg, icoh_meg)
 For EEG, the procedure is the same. The only thing you have to change is the channel selection and the channel combinations:
 
 ````matlab
-% EEG reference channels
+%% EEG reference channels
 ref_chan = 'EEG032'
 
 % Coherence
@@ -245,12 +245,12 @@ coh_eeg = ft_connectivityanalysis(cfg, data_freq);
 
 Plot with EEG layout:
 ````matlab
-cfg = []
+cfg = [];
 cfg.layout          = 'natmeg_customized_eeg1005';
 cfg.showlabels      = 'yes';
 cfg.parameter       = 'cohspctrm';
-cfg.refchannel      = ref_chan
-ft_multiplotER(cfg, coh_eeg)
+cfg.refchannel      = ref_chan;
+ft_topoplotER(cfg, coh_eeg)
 ````
 
 ## Whole-brain connectivity with DICS
@@ -263,7 +263,7 @@ First, load the headmodel and MRI for source reconstruction:
 %% Load 
 load('headmodel_eeg')
 load('headmodel_meg')
-load('mri_resliced.mat')
+load('mri_resliced_cm.mat')
 ````
 
 To calculate the coherence in source space with DICS, we need to specify a reference or seed point in the source space. In the example below I use the location that had maximum power in the DICS source reconstruction in the beamformer tutorial (``maxpos = [-4 1 11]``).
@@ -416,7 +416,7 @@ virt_freq = ft_freqanalysis(cfg, virt_chans);
 % Coherence
 cfg = [];
 cfg.method = 'plv';
-virt_coh = ft_connectivityanalysis(cfg, virt_freq)
+virt_coh = ft_connectivityanalysis(cfg, virt_freq);
 ````
 
 Plot the result:
