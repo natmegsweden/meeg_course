@@ -389,7 +389,7 @@ stat_mvpa = ft_timelockstatistics(cfg, data_thumb_mag, data_little_mag);
 mv_plot_result(stat_mvpa.mvpa, data_thumb_mag.time{1})
 ````
 
-![](figures/stats_fig7.png)
+![](figures/T7_MVPA.jpg)
 
 ## End of Tutorial 7
 
