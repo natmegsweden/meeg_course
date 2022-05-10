@@ -369,7 +369,7 @@ cfg = [];
 cfg.continuous  = 'no';
 cfg.viewmode    = 'butterfly';
 cfg.channel     = 'eeg*';
-cfg.allowoverlab = 'yes';
+cfg.allowoverlap = 'yes';
 ft_databrowser(cfg, preprocessed_data_EEG);
 ```
 ![buttrfly](figures/ft_databrowser_2.png "ft_databrowser")
