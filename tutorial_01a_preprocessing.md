@@ -442,7 +442,7 @@ Plot the interpolated and non-interpolated EEG data. Can you spot the difference
 ```matlab
 cfg = [];
 cfg.viewmode = 'butterfly';
-
+cfg.allowoverlap = 'yes';
 ft_databrowser(cfg, preprocessed_data_EEG);     % not interpolated
 ft_databrowser(cfg, interpolated_data);         % interpolated
 ```
