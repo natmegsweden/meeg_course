@@ -835,7 +835,7 @@ cfg = [];
 cfg.component   = reject_comp;
 cfg.channel     = 'MEG';
 cfg.updatesens  = 'no';
-icacleaned_downsampled_data = ft_rejectcomponent(cfg, comp, raw_flt);
+icacleaned_downsampled_data = ft_rejectcomponent(cfg, comp, cleaned_downsampled_data);
 ```
 
 Use `ft_databrowser` to inspect the difference between `cleaned_downsampled_data` and `icacleaned_downsampled_data` to see what difference this made.
