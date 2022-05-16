@@ -349,6 +349,7 @@ for event_index = 1:n_events
     cfg.latency         = late_latency;
     cfg.numdipoles      = 2;
     cfg.symmetry        = 'x';
+    cfg.grid            = [];
     dipoles_mag_late{event_index} = ft_dipolefitting(cfg, timelockeds{event_index});
  
     % gradiometer fits
@@ -363,6 +364,7 @@ for event_index = 1:n_events
     cfg.latency         = late_latency;
     cfg.numdipoles      = 2;
     cfg.symmetry        = 'x';
+    cfg.grid            = [];
     dipoles_grad_late{event_index} = ft_dipolefitting(cfg, timelockeds{event_index});
     
     %% electrode fits
@@ -379,6 +381,7 @@ for event_index = 1:n_events
     cfg.latency         = late_latency;
     cfg.numdipoles      = 2;
     cfg.symmetry        = 'x';
+    cfg.grid            = [];
     dipoles_eeg_late{event_index} = ft_dipolefitting(cfg, timelockeds{event_index});
 end
 disp('Done')
