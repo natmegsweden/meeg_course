@@ -495,8 +495,10 @@ Now try to do the dipole fits again, but this time using the spherical head mode
 
 ```matlab
 %% Load spherical headmodels
+cd(mri_path)
 load('headmodel_meg_sphere.mat')
 load('headmodel_eeg_sphere.mat')
+cd(output_path)
 ```
 
 Run the dipole fits again, but this time change the ``cfg.headmodel`` to `headmodel_meg_sphere` and `headmodel_eeg_sphere`. Look at the dipole locations on the plots as before:
