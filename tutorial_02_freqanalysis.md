@@ -320,7 +320,7 @@ Also try to plot the EEG TFRs for comparison:
 ```matlab
 cfg = [];
 cfg.parameter       = 'powspctrm';
-cfg.layout          = 'neuromag306eeg1005_natmeg.lay';
+cfg.layout          = 'natmeg_customized_eeg1005.lay';
 cfg.showlabels      = 'yes';
 cfg.baselinetype    = 'relative';
 cfg.baseline        = [-inf 0];
