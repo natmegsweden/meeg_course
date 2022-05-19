@@ -335,7 +335,7 @@ ft_sourceplot(cfg, dics_coh_int);
 
 Connectivity analyses can easily lead to many connectivitions being estimated, which leads to a multiple comparison problem. A solution to deal with this is to narrow the connectivity analysis to pre-specified regions of interest, e.g. specific point on the cortex.
 
-In the following part, I have chosen three points in the brain defined by the coordinates below corresponding to points in left- and right primary-sensory cortex and V1/V2. You can take a look at the DICS figure above and find your own coordinates to use if you want?
+In the following part, I have chosen three points in the brain defined by the coordinates below corresponding to points in left- and right primary-sensory cortex and V1/V2. You can take a look at the DICS figure above and find your own coordinates to use if you want.
 
 ````matlab
 %% Define ROI
