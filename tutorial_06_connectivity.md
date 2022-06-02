@@ -152,7 +152,7 @@ ft_connectivityplot(cfg, slct_coh);
 
 This is a 3x3 grid showing the coherence spectra for each pair of channels.
 
-> **Question 6.1:** Look at the coherence spectra in connectivity plot and compare plots across the diagonal. Why are the plots mirrored across the diagonal?
+> **Question 6.1:** Look at the coherence spectra in connectivity plot and compare plots across the diagonal. Why are the plots mirrored across the diagonal? Would you expect the same if you looked at Granger causality?
 
 We are not limited to estimating connectivity between only a few sensors. For the next part, we calculate the coherence between all sensors. First, select one sensor that will be the reference sensor. This is not a reference in the same sense as the reference for EEG. Here it means the sensor that we use to calculate coherence between this sensor and all other sensors; i.e. one-to-all connectivity. Sometimes this is also called the "seed".
 
