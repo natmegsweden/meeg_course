@@ -399,7 +399,7 @@ ft_sourceplot(cfg, contrast_int);
 
 ![](figures/beamformer_contrast_right_thumb.png)
 
-> **Question 5.3:** Explain how you would interpret your newly the image that you created?
+> **Question 5.3:** Explain how you would interpret the new image that you created?
 
 ## Use beamformers to make a "virtual electrode."
 
