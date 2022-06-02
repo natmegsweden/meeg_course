@@ -96,7 +96,7 @@ evo = ft_timelockanalysis(cfg, cropped_data_bs);
 ```
 Congratulations, you have now computed evoked responses.
 
-> **Question 1.5:** What is in you newly created `evo` struct? Explain the different fields.
+> **Question 1.5:** What is in your newly created `evo` struct? Explain the different fields.
 
 ## Visualize evoked responses
 Use `ft_multiplotER` to plot the ERFs/ERPs. The plots show the averaged responses for all sensors of the given type.
