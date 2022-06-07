@@ -203,7 +203,7 @@ cfg.coordsys            = 'neuromag';
 mri_realigned_2 = ft_volumerealign(cfg, mri_realigned_1);
 ```
 
-The code above will create the interactive figure shown below. You can manually move and scale the head by entering values in the 3x3 grid on the top of the menu to the right. However, since the head points and the MRI already are on the same scale, you should not attempt to scale the MRI. Ans since we selected ICP, it will automatically fit the MRI to the head points. The point of this step is simply to check that the nasion point (green in the figure) is pointing roughly in the direction of the nasion on the MRI. If it does so, click ``quit``. If not, go back to the step where you marked the fiducials with `ft_volumerealign`.
+The code above will create the interactive figure shown below. You can manually move and scale the head by entering values in the 3x3 grid on the top of the menu to the right. However, since the head points and the MRI already are on the same scale, you should not attempt to scale the MRI. And since we selected ICP, it will automatically fit the MRI to the head points once you quit the figure. The point of this step is simply to check that the nasion point (green in the figure) is pointing roughly in the direction of the nasion on the MRI. If it does so, click ``quit``. If not, go back to the step where you marked the fiducials with `ft_volumerealign`.
 
 ![](figures/headalign.jpg)
 
