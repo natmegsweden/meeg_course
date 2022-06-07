@@ -235,7 +235,7 @@ Remember to save:
 save(fullfile(output_path, 'contrast_lcmv.mat'), 'contrast_lcmv'); disp('done');
 ```
 
-Now you can plot the contrsted source reconstruction, similar to thow you did before: by first interpolate onto the structural MRI with `ft_sourceinterpolate` and then plot with `ft_sourceplot`:
+Now you can plot the source reconstruction, similar to how you did before: by first interpolating onto the structural MRI with `ft_sourceinterpolate` and then plotting with `ft_sourceplot`:
 
 ```matlab
 %% Interpolate
