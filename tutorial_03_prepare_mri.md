@@ -93,7 +93,7 @@ The tutorial dataset was collected on an Electra Neuromag MEG scanner and use th
 * Z-axis from the origin upwards orthogonal to the XY-plane (superior is positive on Z-axis)
 * Origin: The intersection of the X-axis and Y-axis (not an anatomical landmark).
 
-Note, that through we transform everything to the Neuromag coordinate system, this procedure is the same for any head coordinate system your MEG or EEG data is defined in, whether given by other MEG/EEG device manufacturers. The difference is only what system we use; usually the "native" system of the MEG/EEG data. Also note, that this is just a practical formality to co-register the MER and MEG/EEG data. Transformation to anatomical coordinates such as Talairach-Tournoux or MNI is a different transformation, usually done at a later point (or some cases earlier) of the processing.
+Note, that through we transform everything to the Neuromag coordinate system, this procedure is the same for any head coordinate system your MEG or EEG data is defined in, whether given by other MEG/EEG device manufacturers. The difference is only what system we use; usually the "native" system of the MEG/EEG data. Also note, that this is just a practical formality to co-register the MRI and MEG/EEG data. Transformation to anatomical coordinates such as Talairach-Tournoux or MNI is a different transformation, usually done at a later point (or some cases earlier) of the processing.
 
 ## Indicate coordinate system
 The first step is to define the axes of the coordinate system. We do this with the FieldTrip function `ft_determine_coordsys`. When you call ``dt_determine_coordsys`` a figure will pop up with the axes ontop the MRI. 
