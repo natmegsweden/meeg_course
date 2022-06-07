@@ -176,7 +176,7 @@ ft_plot_headshape(headshape);
 
 > **Question 3.3:** What is the coordinate system of the head points?
 
-Toghether with the location of the head relative to the MEG sensors and the location of the EEG electrodes, we will now how to "fit" the anatomical data. Let us load the MEG sensor and EEG electrode locations and inspect:
+Toghether with the location of the head relative to the MEG sensors and the location of the EEG electrodes, we will now learn how to "fit" the anatomical data. Let us load the MEG sensor and EEG electrode locations and inspect:
 
 ```matlab
 %% Read MEG/EEG sensor geometry
