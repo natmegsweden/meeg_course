@@ -473,12 +473,11 @@ preprocessed_data = ft_appenddata(cfg, preprocessed_data_MEG, rereferenced_inter
 ```
 
 ## Remove bad trials
-In this step, we remove bad trials. We will move the same bad trials from both MEG and EEG data. This is not necessary if we were analysis MEG and EEG separately. But in this tutorial we also want to compare MEG and EEG, so we want to have the exact same trials in both datasets.
+In this step, we remove bad trials. We will move the same bad trials from both MEG and EEG data. This is not necessary if we analyse MEG and EEG separately. But in this tutorial we also want to compare MEG and EEG, so we want to have the exact same trials in both datasets.
 
 If you have several experimental conditions, always collapse all conditions before summarizing and rejecting to avoid subjective bias. You have already done this if you imported trials all five triggers [1, 2, 4, 8, 16].
 
 We will again use `ft_rejectvisual` and this time focus on the summary statistics over trials (bottom left plot). Mark the **trials** that you think are bad and ought to be removed. Drag across the "bad points" in the figure. Try to plot a few trials to see how the channels look. 
-There are 
 
 This is visually guided way to reject trials by removing those showing high variance. You can also remove specific artefacts by using the the `ft_artifact_xxx` and `ft_rejectartifact` functions. This is a more automated way to do it.
 
@@ -844,7 +843,7 @@ Use `ft_databrowser` to inspect the difference between `cleaned_downsampled_data
 Finally, save the data:
 ```matlab
 %% Save
-save(fullfile(output_path, 'icacleaned_downsampled_data'), 'icacleaned_downsampled_data'); disp('done');
+save(fullfile(output_path, 'icacleaned_downsampled_data'), 'icacleaned_downsampled_data', '-v7.3'); disp('done');
 ```
 
 ## End of Tutorial 1a...
