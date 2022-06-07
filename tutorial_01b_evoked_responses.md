@@ -101,7 +101,7 @@ Congratulations, you have now computed evoked responses.
 ## Visualize evoked responses
 Use `ft_multiplotER` to plot the ERFs/ERPs. The plots show the averaged responses for all sensors of the given type.
 
-The plots are interactive. Use your courser to select channels and then click on them to open a new figure that zooms in on the selected channels. You can then highlight parts of the time-series in the same way to open a new figure that shows the topography of that time window. Use this to explore the evoked responses.
+The plots are interactive. Use your coursor to select channels and then click on them to open a new figure that zooms in on the selected channels. You can then highlight parts of the time-series in the same way to open a new figure that shows the topography of that time window. Use this to explore the evoked responses.
 
 ```matlab
 %% Plot evoked
