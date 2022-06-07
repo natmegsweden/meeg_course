@@ -258,7 +258,7 @@ ft_sourceplot(cfg, source_int);
 
 In the next part, we will do source reconstruction of time-frequency data with a beamformer method known as Dynamic Imaging of Coherent Sources (DICS).
 
-We will start by finding a time-frequency area of interest that want to know the underlying sources. From time-domain data, we will calculate the cross-spectral density of the frequency (or frequencies) of interest and then use the cross-spectral density to find underlying the sources. We will here focus on reconstructing the activity underlying the beta rebound.  
+We will start by finding a time-frequency area of interest that want to know the underlying sources. From time-domain data, we will calculate the cross-spectral density of the frequency (or frequencies) of interest and then use the cross-spectral density to find the underlying sources. We will focus here on reconstructing the activity underlying the beta rebound.  
 
 1. We crop the data to find the period of interest (690 to 970 msec).
 2. We define a baseline period of similar duration. We will compare the period of interest against this since the power estimates that the beamformer results in are not informative in themselves.
