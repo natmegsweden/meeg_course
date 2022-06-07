@@ -165,7 +165,7 @@ cfg.latency = [0.100 0.200];
 data_stim = ft_selectdata(cfg, cleaned_downsampled_data);
 ```
 
-Calculate evoked sepratly for time of interest, basline, and the combined time-window::
+Calculate evoked seprately for time of interest, baseline, and the combined time-window:
 
 ```matlab
 %% Evoked for TOI
