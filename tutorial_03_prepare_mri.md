@@ -88,8 +88,8 @@ To align the MRI image to the head points in the MEG/EEG data, the first step is
 
 The tutorial dataset was collected on an Electra Neuromag MEG scanner and use the Neuromag coordinate system. The Neuromag coordinate system is defined based on external landmarks, i.e. the fiducials that were defined as the first step when we digitized the subject before the recording. The coordinate system is defined like this:
 
-* X-axis from the origin towards the RPA point (Right is positive on X-axis)
-* Y-axis from the origin towards the nasion (posterior is positive on Y-axis)
+* X-axis from the origin towards the RPA point (right is positive on X-axis)
+* Y-axis from the origin towards the nasion (anterior is positive on Y-axis)
 * Z-axis from the origin upwards orthogonal to the XY-plane (superior is positive on Z-axis)
 * Origin: The intersection of the X-axis and Y-axis (not an anatomical landmark).
 
