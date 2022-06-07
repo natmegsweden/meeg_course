@@ -199,7 +199,7 @@ cfg.senstype        = 'MEG';
 source_all = ft_sourceanalysis(cfg, evo_all);
 ```
 
-> **Question 5.2:** Explore what is in the the `source_all.avg.filter` structure and then explain what is in the structure?
+> **Question 5.2:** Explore what is in the `source_all.avg.filter` structure and then explain what is in the structure?
 >
 > *Hint*: if you get confused about large empty fields, take a look at the size of the `pos` field and the `inside` field.
 
