@@ -225,7 +225,7 @@ Zoom in on a single channel:
 
 ![](figures/TFR_hannSingleChan.jpg)
 
-> **Question 2.6:** How does the baseline change what we can infer from the TFR (Hint: Toggle the colorbar option to show what the colours represent in either plot)?
+> **Question 2.6:** How does the baseline change what we can infer from a TFR (Hint: Toggle the colorbar option to show what the colours represent in either plot)?
 
 ### Get TFR with Hann taper with varying length
 The previous TFR analysis used a fixed window for all frequencies. This is not optimal in this case. Now we will run the same analysis, but with time windows that vary with the individual frequency. Here we use a time window that corresponds to five times the wavelength of the frequency of interest (`cfg.t_ftimwin = 5./cfg.foi`)
