@@ -482,10 +482,10 @@ for i=1:length(data.trial)
 end
 ```
 
-For good measure, let us just organise the data according to the FieldTrip convention. Then we can continue to use FielTrip function to analyse our virtual channel.
+For good measure, let us just organise the data according to the FieldTrip convention. Then we can continue to use FieldTrip function to analyse our virtual channel.
 
 ```matlab
-%% Organice in FieldTrip stucture
+%% Organise in FieldTrip stucture
 virt_elec.time      = data.time;        % Copy time
 virt_elec.fsample   = data.fsample;     % Copy sample frequency
 virt_elec.label     ={'virtual_chan_x', 'virtual_chan_y', 'virtual_chan_z'};
