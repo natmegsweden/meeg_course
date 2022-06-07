@@ -377,7 +377,8 @@ figure; ft_multiplotTFR(cfg, tfr_wavelet);
 figure; ft_multiplotTFR(cfg, tfr_wavelet_nophase);
 ```
 
+> **Question 2.8:** what do the TFR results show? Pick the method you prefer and describe what type of *induced responses* we see (Hint: Remember what ERS and ERD stood for). Use representative plots to illustrate the results.
+
+
 ## End of Tutoiral 2
 Now you have compared different methods to calculate PSD and TFR.
-
-> **Question 2.8:** what do the TFR results show? Pick the method you prefer and explain what type of *induced responses* we see (Hint: Remember what ERS and ERD stood for). Use representative plots to illustrate the results.
