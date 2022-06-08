@@ -264,7 +264,7 @@ subplot(1,3,3); ft_topoplotER(cfg,temp); title('Difference')
 
 ## Two-dipole models
 
-Do a dipole fit again for the late ERF component by changing `cfg.latency = late_latency` and rerun the code.
+Do a dipole fit again for the late ERF component by changing `cfg.latency = late_latency` and rerun the code. You may also want to adjust zlim.
 
 Plot measures versus predicted topographies again. See if you get the same result as below:
 
