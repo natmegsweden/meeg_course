@@ -287,7 +287,7 @@ cfg.channel = 'megmag';
 neighbours_mag = ft_prepare_neighbours(cfg, data_thumb_mag);
 ````
 
-Use `ft_neighbourplot` to visually inspect how the neighborhoos structure looks:
+Use `ft_neighbourplot` to visually inspect how the neighbours structure looks:
 
 ````matlab
 %% Plot neighbours for inspection
