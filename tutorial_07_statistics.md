@@ -258,7 +258,7 @@ ft_singleplotER(cfg, chandat_thumb_avg, chandat_little_avg)
 
 The shaded areas are the clusters above the significance threshold that, in this case, mean that we reject the null hypothesis.
 
-> **Question 7.2:** Write a summary of the single-channel non-parametric cluster-based permutation test as if you were to report the result of the test and interpretation hereof in the results section of a scientific paper.
+> **Question 7.2:** Write a summary of the single-channel non-parametric cluster-based permutation test as if you were to report the result of the test and interpretation thereof in the results section of a scientific paper.
 
 ## Non-parametric cluster-based permutation tests on all channel data
 
@@ -358,7 +358,7 @@ ft_multiplotER(cfg, evo_thumb, evo_little)
 
 ![](figures/stats_fig6.png)
 
-> **Question 7.3:** Write a summary of the non-parametric cluster-based permutation test on the full magnetometer array as if you were to report the result of the test and interpretation hereof in the results section of a scientific paper.
+> **Question 7.3:** Write a summary of the non-parametric cluster-based permutation test on the full magnetometer array as if you were to report the result of the test and interpretation thereof in the results section of a scientific paper.
 
 ## Optional: Multivariate pattern analysis
 
@@ -391,7 +391,7 @@ mv_plot_result(stat_mvpa.mvpa, data_thumb_mag.time{1})
 
 ![](figures/T7_MVPA.jpg)
 
-> **Question 7.4:** Select **one** of the above ways to do statistical comparisons and redo that analysis using either gradiometers or electrodes instead of magnetometers (you decide yourself). Write a summary of the procedure from selecting data features, how you did the statistical test, the results of the test, and interpretation of the result as if you were to report the procedure and result in a scientific paper.
+> **Question 7.4:** Select **one** of the above ways to do statistical comparisons and redo that analysis using either gradiometers or electrodes instead of magnetometers (you decide yourself). Write a summary of the procedure from selecting data features/method, how you did the statistical test (including key parameteres), the results of the test, and interpretation of the results as if you were to report the procedure and results in the method and results sections in a scientific paper.
 >
 > Feel free to change any parameters of the functions or data selection procedure as you like, but describe what you did and why in the text.
 >
