@@ -391,7 +391,7 @@ mv_plot_result(stat_mvpa.mvpa, data_thumb_mag.time{1})
 
 ![](figures/T7_MVPA.jpg)
 
-> **Question 7.4:** Select **one** of the above ways to do statistical comparisons and redo that analysis using either gradiometers or electrodes instead of magnetometers (you decide yourself). Write a summary of the procedure from selecting data features, how you did the statistical test, the results of the test, and interpretation of the result as if you were to report the procedure and result in the statistics and results-sections of a scientific paper.
+> **Question 7.4:** Select **one** of the above ways to do statistical comparisons and redo that analysis using either gradiometers or electrodes instead of magnetometers (you decide yourself). Write a summary of the procedure from selecting data features, how you did the statistical test, the results of the test, and interpretation of the result as if you were to report the procedure and result in a scientific paper.
 >
 > Feel free to change any parameters of the functions or data selection procedure as you like, but describe what you did and why in the text.
 >
