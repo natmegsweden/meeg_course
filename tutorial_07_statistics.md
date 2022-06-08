@@ -8,7 +8,7 @@ Statistical comparison and testing with MEG/EEG signals require considerable con
 
 In this tutorial you will do a within-subject analysis. That means that you compare data across repetitions from only a single subject. The *unit of observation* is the single trial. In a real dataset, you would, in most cases, have data from many subjects, and the unit of observation is data from each subject. Data from each subject would first be processed to get the ERF/ERP, TFR response, etc., as you have done in the previous tutorials. The within-subject averaged data will be the unit of observation. The principles of the statistics are, however, the same as presented in this tutorial, but be aware that the unit of observation will change when doing analysis "for real".
 
-_The MVPA analysis in FieldTrip requires an additional standalone Matlab toolbox [MVPA-Light](https://github.com/treder/MVPA-Light). The MVPA-Light toolbox can be downloaded for free, but if you have trouble getting it, then you can skip this part and answer the questions using the example figures in the tutorial (for question 7.4 you describe the method used in 7.2 or 7.3)._
+_The MVPA analysis in FieldTrip requires an additional standalone Matlab toolbox [MVPA-Light](https://github.com/treder/MVPA-Light). The MVPA-Light toolbox can be downloaded for free, but if you have trouble getting it, then you can skip the option MVPA part of the tutorial._
 
 ## Setup paths
 
