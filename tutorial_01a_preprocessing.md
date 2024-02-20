@@ -808,7 +808,13 @@ axis([0.5, length(maxcoh)+0.5, 0, 1]);
 
 % View marked component(s)
 cfg = [];
-cfg.channel     = ecg_comp_idx; 	   % components to be plotted
+cfg.channel     = eog1_comp_idx; 	   % components to be plotted
+cfg.viewmode    = 'component';
+cfg.layout      = 'neuromag306all.lay'; % specify the layout file that should be used for plotting
+ft_databrowser(cfg, comp)
+
+cfg = [];
+cfg.channel     = eog2_comp_idx; 	   % components to be plotted
 cfg.viewmode    = 'component';
 cfg.layout      = 'neuromag306all.lay'; % specify the layout file that should be used for plotting
 ft_databrowser(cfg, comp)
