@@ -264,7 +264,7 @@ data = ft_preprocessing(cfg);
 
 Look at data structure `data`.
 
-> **Question 1.3:** Explain how the MEG/EEG is data stored in the `data` struct.
+> **Question 1.3:** Describe how the MEG/EEG is data stored in the `data` struct.
 
 As before, we once again only have read data from one of the three data files. The following code will loop over all three files and read data. For this next step, we also read all five conditions (i.e. tactile stimulation to each finger).
 
