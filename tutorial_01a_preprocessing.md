@@ -137,7 +137,7 @@ for ii = 1:length(filenames)
 end
 
 % Combine
-eve = [eves{1}, eves{2}, eves{3}];
+eve = [eves{1}; eves{2}; eves{3}];
 ```
 Now that we have all events combined in one struct, take a look at how many we have of each trial:
 
