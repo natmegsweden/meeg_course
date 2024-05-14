@@ -576,6 +576,11 @@ ft_databrowser(cfg, comp)
 cfg.channel     = [21:40];
 ft_databrowser(cfg, comp)
 ```
+> #### Sidenote
+> If you want to try ica on the EEG data you can pick channel 'eeg'. Make sure to change the layout when visualizing the components to: 
+> ```matlab
+> cfg.layout  = 'natmeg_customized_eeg1005.lay';
+> ```
 
 See if you can find components that correspond to eye-blinks and heart-beats from the component topographies and component time-series? When you have found the components that correspond to eye-blinks and heart-beats, you can remove them with `ft_rejectcomponets`:
 
