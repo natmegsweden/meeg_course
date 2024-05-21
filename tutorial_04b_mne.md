@@ -83,7 +83,7 @@ Each point on the grid represents a dipole in the MNE source reconstruction.
 ## Load MEG/EEG data and headmodel
 ```matlab
 %% Load headmodel and MEG/EEG data
-load('headmodel_mne_meg.mat')
+load(fullfile(mri_path,'headmodel_mne_meg.mat'))
 load('timelockeds.mat')
 ````
 
