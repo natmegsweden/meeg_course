@@ -383,8 +383,8 @@ Now plot all the contrasts:
 ```matlab
 %% plot DICS source analyses   
 % Find min/max to scale data
-max_pow = max(contrast_int.pow);
-min_pow = min(contrast_int.pow);
+max_pow = max(contrast_int.pow(:));
+min_pow = min(contrast_int.pow(:));
 
 % Plot
 cfg = [];
