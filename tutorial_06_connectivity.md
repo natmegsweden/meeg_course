@@ -100,6 +100,7 @@ Then select only data from those three channels with `ft_selectdata`:
 %% Select sensors
 cfg = [];
 cfg.channel = sensors;
+cfg.latency = [0.000 0.500];
 slct_data = ft_selectdata(cfg, data);
 ````
 
