@@ -217,8 +217,8 @@ ft_topoplotER(cfg, evo_combined_planar);
 
 ![eeg_topo](figures/topo_50_eeg.png)
 
-> **Question 1.7:** Based on the topographies: where do you estimate that are equivalent current dipoles and how many? Hint: remember the right-hand rule and what the different sensor types measure.
->
+> **Question 1.7:** Based on the topographies: where do you estimate that are equivalent current dipoles and how many? Mark in the topoplots.
+> Hint: remember the right-hand rule and what the different sensor types measure.
 > Note that the EEG topography above is misleading for locating dipoles. Something in the pre-processing did not go right. What might this be? Did you do better? 
 
 ## Make evoked for all events
