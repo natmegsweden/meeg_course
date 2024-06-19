@@ -540,7 +540,7 @@ save(fullfile(output_path, 'cleaned_downsampled_data'), 'cleaned_downsampled_dat
 ## Advanced pre-processing: independent component analysis (ICA)
 Independent component analysis (ICA) is a decomposition method that breaks data into statistically independent components. ICA is useful for identifying patterns of activity that occur regularly in the data. ICA has many applications in MEG/EEG analysis. The most common use is to identify activity related to eye-blinks and heart-beats. These are part of the signal that we (usually) do not want.
 
-The code below shows how to remove eye-blinks and heart-beats from the MEG data.
+The code below shows how to remove eye-blinks and heart-beats from the MEG data. You can run the same steps for EEG.
 
 ```matlab
 %% Run ICA
