@@ -148,7 +148,9 @@ mri_realigned_1 = ft_volumerealign(cfg, mri_coordsys);
 
 Click on the image until the crosshair is on a location corresponding to a fiducial point. You can also scroll through the volume with the arrow keys. Once the crosshair is in a location you think is correct, press "n" for NAS, "l" for LPA, and "r" for RPA on your keyboard. The coordinates of the fiducials will be written in the MATLAB terminal—Press "f" on your keyboard to toggle fiducial visibility on the plot.
 
-You can mark the fiducials multiple times until you are satisfied with the positions. Do it as precise as you can, but do not get upset if it is not perfect. Imprecision will be adjusted in the following steps.
+You can mark the fiducials (green crosses in the image below) multiple times until you are satisfied with the positions. Do it as precise as you can, but do not get upset if it is not perfect. Imprecision will be adjusted in the following steps.
+
+![](figures/Fiducials.png)
 
 > **Question 3.2:** Once you are satisfied with the positions, save the figure (or take a screenshot) of the location of the fiducials. Make sure the fiducials are visible. Include this in your report.
 
