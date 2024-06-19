@@ -44,7 +44,7 @@ output_path = fullfile(meg_path, subjects_and_dates{1}, 'MEG');
 Load the cleaned MEG/EEG data:
 ```matlab
 %% Load data
-load(fullfile(output_path, 'cleaned_downsampled_data.mat')); disp('done');
+load(fullfile(output_path, 'icacleaned_downsampled_data.mat')); disp('done');
 ```
 
 ## A little more pre-processing
@@ -58,7 +58,7 @@ cfg = [];
 cfg.lpfilter  = 'yes';        % Apply lowpass filter
 cfg.lpfreq    = 70;           % lowpass cutoff frequency in Hz
 
-filt_downsampled_data = ft_preprocessing(cfg, cleaned_downsampled_data)
+filt_downsampled_data = ft_preprocessing(cfg, icacleaned_downsampled_data)
 ```
 Crop trials into time of interest:
 
