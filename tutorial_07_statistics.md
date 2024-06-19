@@ -110,7 +110,7 @@ toi = evo_both_mag.time > t_win(1) & evo_both_mag.time < t_win(2);
 
 % Find peak channel
 [mx1, idx1] = max(mean(evo_both_mag.avg(:,toi),2));
-pk_chan = evo_both_mag.label(5);
+pk_chan = evo_both_mag.label(idx1);
 ````
 
 We then use the name of the channel that we found (stores in `pk_chan`) to select data from the thumb and little finger data separately with `ft_selectdata`. In `ft_selectdata` we can also specify the time-window, and we can specify that we want to average data over the time-window.
