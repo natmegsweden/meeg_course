@@ -57,7 +57,8 @@ Since we are interested in the slow evoked responses, we might as well get rid o
 cfg = [];
 cfg.lpfilter  = 'yes';        % Apply lowpass filter
 cfg.lpfreq    = 70;           % lowpass cutoff frequency in Hz
-
+cfg.dftfilter = 'yes';
+cfg.dtffreq   = 50;
 filt_downsampled_data = ft_preprocessing(cfg, icacleaned_downsampled_data)
 ```
 Crop trials into time of interest:
