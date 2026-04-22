@@ -484,48 +484,7 @@ Dipole LATE plot electrodes. We get a bad fit for the SII:
 
 ![](figures/dipoles_late_2electrodes.png)
 
-## Intermittent conclusions
-We get the best fits from the gradiometers. In contrast, the electrodes seem way off.  
-
-Now try to load the spherical head model for EEG created in Tutorial 03. Then rerun the dipole analysis script to do dipole fits based on the sphere model instead of the tissue-based head model. 
-
-## Dipole fits with concentric spheres head model
-
-Now try to do the dipole fits again, but this time using the spherical head models from *Tutorial 03*.
-
-```matlab
-%% Load spherical headmodels
-cd(mri_path)
-load('headmodel_meg_sphere.mat')
-load('headmodel_eeg_sphere.mat')
-cd(output_path)
-```
-
-Run the dipole fits again, but this time change the ``cfg.headmodel`` to `headmodel_meg_sphere` and `headmodel_eeg_sphere`. Look at the dipole locations on the plots as before:
-
-Dipole EARLY for magnetometers _single sphere_. We get a good fit to the SI:
-
-![](figures/dipoles_early_2_concentricspheres_magnetometers.png)
-
-Dipole EARLY for gradiometers _single sphere_. We get a good fit to the SI:
-
-![](figures/dipoles_early_2_concentricspheres_gradiometers.png)
-
-Dipole EARLY for electrodes _concentric spheres_. _Now_ We get a good fit to the SI:
-
-![](figures/dipoles_early_2_concentricspheres_electrodes.png)
-
-Dipole LATE for magnetometers _single sphere_. We still get a bad fit to the SII:
-
-![](figures/dipoles_late_2_concentricspheres_magnetometers.png)
-
-Dipole LATE plot gradiometers _single sphere_. We get a good fit for the SII:
-
-![](figures/dipoles_late_2_concentricspheres_gradiometers.png)
-
-Dipole LATE plot electrodes _concentric spheres_. _Now_ we also get a good fit to the SII:
-
-![](figures/dipoles_late_2_concentricspheres_electrodes.png)
 
 ## End of Tutorial 4A
-With the non-tissue related models, we can get reasonable fits with the EEG as well. Still, spherical models do not make sense for the more advanced modelling techniques such as beamformer and minimum-norm estimates that we will turn to in next tutorials. This underlines that the tissue-based EEG head models are hard to create (It may have to do with a poor quality MRI), but in general the advantage of MEG is that you just need to be able to delineate the brain.
+EEG fits for the early component looked worse compared to the magnetometers and gradiometers. This underlines that the tissue-based EEG head models are hard to create (It may have to do with a poor quality MRI), but in general the advantage of MEG is that you just need to be able to delineate the brain.
+Independent of sensor type, the fits were much better for early components than late. This might indicate that the activity at later latencies have become too complex or wide-spread to be accurately explaind by two dipoles. A distributed model may be more suitable.
