@@ -487,4 +487,5 @@ Dipole LATE plot electrodes. We get a bad fit for the SII:
 
 ## End of Tutorial 4A
 EEG fits for the early component looked worse compared to the magnetometers and gradiometers. This underlines that the tissue-based EEG head models are hard to create (It may have to do with a poor quality MRI), but in general the advantage of MEG is that you just need to be able to delineate the brain.
+
 Independent of sensor type, the fits were much better for early components than late. This might indicate that the activity at later latencies have become too complex or wide-spread to be accurately explaind by two dipoles. A distributed model may be more suitable.
