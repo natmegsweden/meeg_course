@@ -268,7 +268,7 @@ mri_segmented = ft_volumesegment(cfg, mri_resliced_cm);
 save(fullfile(output_path, 'mri_segmented.mat'), 'mri_segmented'); disp('done')
 ```
 
-> **Question 3.4:** What is covered by the *brain* compartment?
+> **Question 3.4:** What is included in the *brain* compartment?
 >
 > You can plot the *brain* segmentation to see, like this:
 > ```matlab
