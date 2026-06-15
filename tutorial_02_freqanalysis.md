@@ -145,9 +145,9 @@ ft_multiplotER(cfg, psd_hann, psd_dpss, psd_dpss10);
 Compare the results from the different methods to calculate PSD.
 
 > **Question 2.4:** Select the alpha range (~8-12 Hz) in the multiplot to plot as topo-plots. 
-How different/alike are they? Explain why?
+How different/alike do the spectra with Hann, DPSS2 and DPSS10 look? Explain why?
 >
-> Select the beta range (~14-30 Hz) and compare topo-plots. How different/alike are they? Explain why?
+> Select the beta range (~14-30 Hz) and compare topo-plots. How do the beta spectra compare between methods?
 >
 > Finally, plot the "high-gamma" range (~55-95 Hz) by changing `cfg.xlim = [55 95]`. How do the high-gamma spectra compare between methods?
 
