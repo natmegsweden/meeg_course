@@ -94,7 +94,7 @@ For our first beamformer source reconstruction, we will select the time evoked r
 %% Select data
 cfg = [];
 cfg.trials = cleaned_downsampled_data.trialinfo == 8;
-cfg.latency = [0.100 0.200];
+cfg.latency = [0 0.100];
 
 data = ft_selectdata(cfg, cleaned_downsampled_data);
 
@@ -152,15 +152,15 @@ The centre of the head bias means that the source reconstructions in themselves 
 %% Select data
 cfg = [];
 cfg.trials = cleaned_downsampled_data.trialinfo == 16;
-cfg.latency = [-0.200 0.200];
+cfg.latency = [-0.100 0.100];
 
 data_all = ft_selectdata(cfg, cleaned_downsampled_data);
 
-cfg.latency = [-0.200 -0.100];
+cfg.latency = [-0.100 0];
 
 data_base = ft_selectdata(cfg, cleaned_downsampled_data);
 
-cfg.latency = [0.100 0.200];
+cfg.latency = [0 0.100];
 
 data_stim = ft_selectdata(cfg, cleaned_downsampled_data);
 ```
@@ -253,6 +253,10 @@ ft_sourceplot(cfg, source_int);
 ```
 
 ![](figures/lcmv_source.png)
+
+> **Question 5.3:** Would it make sense to use a LCMV beamformer for the late latency activity and why?
+>
+> *Hint*: think back to what you learned in the dipole fitting tutorial.
 
 ## Frequency-domain beamformer (DICS)
 
@@ -399,7 +403,7 @@ ft_sourceplot(cfg, contrast_int);
 
 ![](figures/beamformer_contrast_right_thumb.png)
 
-> **Question 5.3:** Explain how you would interpret the new image that you created?
+> **Question 5.4:** Explain how you would interpret the new image that you created?
 
 ## Use beamformers to make a "virtual electrode."
 
@@ -519,7 +523,7 @@ subplot(2,1,2); plot(virt_evo.time, mn);
 
 ![](figures/virtual_ERF.png))
 
-> **Question 5.4:** How does the virtual channel estimated from the EEG electrodes compare the virtual channel estimated from the gradiometers and why might this be? Include a plot of the virtual channel to help with the explanation.
+> **Question 5.5:** How does the virtual channel estimated from the EEG electrodes compare the virtual channel estimated from the gradiometers and why might this be? Include a plot of the virtual channel to help with the explanation.
 > The procedure to create a "virtual channel" is the same for magnetometers and EEG electrodes (though the actual calculation "under the hood" is different). Repeat the procedure to calculate the virtual electrode, but this time for the EEG data. Change all the `cfg.channel` from `meggrad` to `EEG*` and the ``cfg.senstype`` from `MEG` to `ÈEG`. Also, be aware that you should specify sensor information as `cfg.elec` rather than `cfg.grad` and points to the appropriate electrode structure.
 >
 > Also remember to change the data selction in the beginning or you might end up with an error when applying the filter to the raw data:
