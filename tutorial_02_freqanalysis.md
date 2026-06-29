@@ -377,7 +377,7 @@ figure; ft_multiplotTFR(cfg, tfr_wavelet);
 figure; ft_multiplotTFR(cfg, tfr_wavelet_nophase);
 ```
 
-> **Question 2.8:** what do the TFR results show? Pick the method you prefer and describe what type of *induced responses* we see (Hint: Remember what ERS and ERD stood for). Use representative plots to illustrate the results.
+> **Question 2.8:** What do the TFR results show? Pick the method you prefer, use a representative plot (e.g., a sensor showing strong changes) and describe what type of *induced responses* we see (Hint: Remember what ERS and ERD stood for).
 
 
 ## End of Tutoiral 2
